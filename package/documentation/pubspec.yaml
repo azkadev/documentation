@@ -1,6 +1,6 @@
 name: 'documentation'
 description: 'A Library for create documentation super easy and fast customizable'
-version: '0.0.1'
+version: '0.0.2'
 environment: 
   sdk: '>=3.3.3 <4.0.0'
 dependencies: 
@@ -18,7 +18,7 @@ dependencies:
   icons_plus: '^5.0.0'
   flutter_hicons: '^0.1.0'
   url_launcher: '^6.2.6'
-  cool_alert: ^2.0.1
+  cool_alert: '^2.0.1'
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'

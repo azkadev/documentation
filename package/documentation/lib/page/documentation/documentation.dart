@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:documentation/scheme/scheme.dart';
-import 'package:documentation/documentation_main.dart';
 import 'package:documentation/widget/footer.dart';
 import 'package:documentation/widget/markdown/markdown.dart';
 
@@ -11,11 +10,13 @@ class DocumentationPageDocumentation extends StatefulWidget {
   final DocsData docsData;
   final List<String> authorUrlSocialMedias;
   final DocumentationFooterData documentationFooterData;
+  final GeneralLibFlutterApp generalLibFlutterApp;
   const DocumentationPageDocumentation({
     super.key,
     required this.docsData,
     required this.authorUrlSocialMedias,
     required this.documentationFooterData,
+    required this.generalLibFlutterApp,
   });
 
   @override
@@ -138,8 +139,7 @@ class _DocumentationPageDocumentationState
                       // theme mode
                       return IconButton(
                         onPressed: () {
-                          DocumentationMainApp.generalLibFlutterApp
-                              .autoChangeTheme(
+                          widget.generalLibFlutterApp.autoChangeTheme(
                             onChangeBrightness: () {
                               return context.mediaQueryData.platformBrightness;
                             },
@@ -148,13 +148,11 @@ class _DocumentationPageDocumentationState
                         },
                         icon: Icon(
                           () {
-                            if (DocumentationMainApp
-                                    .generalLibFlutterApp.themeMode ==
+                            if (widget.generalLibFlutterApp.themeMode ==
                                 ThemeMode.dark) {
                               return Icons.dark_mode;
                             }
-                            if (DocumentationMainApp
-                                    .generalLibFlutterApp.themeMode ==
+                            if (widget.generalLibFlutterApp.themeMode ==
                                 ThemeMode.light) {
                               return Icons.light_mode;
                             }

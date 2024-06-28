@@ -1,6 +1,6 @@
 name: 'documentation_project'
 description: 'A Library for create documentation super easy and fast customizable'
-version: '0.0.1'
+version: '0.0.2'
 repository: 'https://github.com/azkadev/documentation'
 homepage: 'https://github.com/azkadev/documentation'
 issue_tracker: 'https://github.com/azkadev/documentation/issues'

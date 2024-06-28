@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:documentation/page/documentation/documentation.dart';
 import 'package:documentation/scheme/scheme.dart';
-import 'package:documentation/documentation_main.dart';
 import 'package:documentation/widget/author.dart';
 import 'package:documentation/widget/footer.dart';
 import 'package:documentation/widget/markdown/markdown.dart';
 
 class LandingPageDocumentation extends StatefulWidget {
   final DocumentationData documentationData;
-  const LandingPageDocumentation({super.key, required this.documentationData});
+  final GeneralLibFlutterApp generalLibFlutterApp;
+  const LandingPageDocumentation({
+    super.key,
+    required this.documentationData,
+    required this.generalLibFlutterApp,
+  });
 
   @override
   State<LandingPageDocumentation> createState() =>
@@ -77,6 +81,7 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                         builder: (context) {
                           return LandingPageDocumentation(
                             documentationData: widget.documentationData,
+                            generalLibFlutterApp: widget.generalLibFlutterApp,
                           );
                         },
                       ));
@@ -94,8 +99,7 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                       // theme mode
                       return IconButton(
                         onPressed: () {
-                          DocumentationMainApp.generalLibFlutterApp
-                              .autoChangeTheme(
+                          widget.generalLibFlutterApp.autoChangeTheme(
                             onChangeBrightness: () {
                               return context.mediaQueryData.platformBrightness;
                             },
@@ -104,13 +108,11 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                         },
                         icon: Icon(
                           () {
-                            if (DocumentationMainApp
-                                    .generalLibFlutterApp.themeMode ==
+                            if (widget.generalLibFlutterApp.themeMode ==
                                 ThemeMode.dark) {
                               return Icons.dark_mode;
                             }
-                            if (DocumentationMainApp
-                                    .generalLibFlutterApp.themeMode ==
+                            if (widget.generalLibFlutterApp.themeMode ==
                                 ThemeMode.light) {
                               return Icons.light_mode;
                             }
@@ -313,6 +315,8 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                                               .author_url_social_medias,
                                           documentationFooterData:
                                               widget.documentationData.footer,
+                                          generalLibFlutterApp:
+                                              widget.generalLibFlutterApp,
                                         );
                                       },
                                     ),

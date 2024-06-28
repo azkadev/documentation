@@ -1,11 +1,16 @@
 import 'package:documentation/scheme/scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:general_lib_flutter/extension/build_context.dart';
+
 import 'package:documentation/page/landing/landing.dart';
+import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 class DocumentationApp extends StatefulWidget {
   final DocumentationData documentationData;
-  const DocumentationApp({super.key, required this.documentationData});
+  final GeneralLibFlutterApp generalLibFlutterApp;
+  const DocumentationApp(
+      {super.key,
+      required this.documentationData,
+      required this.generalLibFlutterApp});
 
   @override
   State<DocumentationApp> createState() => _DocumentationAppState();
@@ -31,6 +36,7 @@ class _DocumentationAppState extends State<DocumentationApp> {
         builder: (context) {
           return LandingPageDocumentation(
             documentationData: widget.documentationData,
+            generalLibFlutterApp: widget.generalLibFlutterApp,
           );
         },
       ));
