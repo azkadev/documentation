@@ -2,21 +2,16 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
- 
 class LinkData extends JsonScheme {
-
-  
   LinkData(super.rawData);
-   
+
   static Map get defaultData {
-    return {"@type":"linkData","icon":"","title":"","value":""};
+    return {"@type": "linkData", "icon": "", "title": "", "value": ""};
   }
 
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -25,16 +20,13 @@ class LinkData extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   String? get icon {
     try {
-      if (rawData["icon"] is String == false){
+      if (rawData["icon"] is String == false) {
         return null;
       }
       return rawData["icon"] as String;
@@ -43,16 +35,13 @@ class LinkData extends JsonScheme {
     }
   }
 
-  
   set icon(String? value) {
     rawData["icon"] = value;
   }
 
-
-  
   String? get title {
     try {
-      if (rawData["title"] is String == false){
+      if (rawData["title"] is String == false) {
         return null;
       }
       return rawData["title"] as String;
@@ -61,16 +50,13 @@ class LinkData extends JsonScheme {
     }
   }
 
-  
   set title(String? value) {
     rawData["title"] = value;
   }
 
-
-  
   String? get value {
     try {
-      if (rawData["value"] is String == false){
+      if (rawData["value"] is String == false) {
         return null;
       }
       return rawData["value"] as String;
@@ -79,38 +65,27 @@ class LinkData extends JsonScheme {
     }
   }
 
-  
   set value(String? value) {
     rawData["value"] = value;
   }
 
-
-  
   static LinkData create({
-
     String special_type = "linkData",
     String? icon,
     String? title,
     String? value,
-})  {
+  }) {
     // LinkData linkData = LinkData({
-Map linkData_data_create_json = {
-  
+    Map linkData_data_create_json = {
       "@type": special_type,
       "icon": icon,
       "title": title,
       "value": value,
+    };
 
+    linkData_data_create_json.removeWhere((key, value) => value == null);
+    LinkData linkData_data_create = LinkData(linkData_data_create_json);
 
-};
-
-
-          linkData_data_create_json.removeWhere((key, value) => value == null);
-LinkData linkData_data_create = LinkData(linkData_data_create_json);
-
-return linkData_data_create;
-
-
-
-      }
+    return linkData_data_create;
+  }
 }

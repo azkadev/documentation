@@ -138,7 +138,7 @@ packages:
     source: hosted
     version: "3.1.1"
   cool_alert:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: cool_alert
       sha256: "080a6c3503a4cded8f626cdead23f17ea40ff066ff50847d71a7a264032ab092"

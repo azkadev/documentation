@@ -5,14 +5,19 @@ import 'package:icons_plus/icons_plus.dart';
 
 import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
- import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class AuthorWidget extends StatefulWidget {
   final Axis direction;
   final bool isShowTitle;
   final String title;
   final List<String> authorUrlSocialMedias;
-  const AuthorWidget({super.key, this.direction = Axis.horizontal, this.isShowTitle = true, this.title = "Author / Created By", required this.authorUrlSocialMedias});
+  const AuthorWidget(
+      {super.key,
+      this.direction = Axis.horizontal,
+      this.isShowTitle = true,
+      this.title = "Author / Created By",
+      required this.authorUrlSocialMedias});
 
   @override
   State<AuthorWidget> createState() => _AuthorWidgetState();
@@ -142,7 +147,8 @@ class _AuthorWidgetState extends State<AuthorWidget> {
       iconData = IonIcons.logo_github;
     } else if (RegExp("(tiktok)", caseSensitive: false).hasMatch(link)) {
       iconData = IonIcons.logo_tiktok;
-    } else if (RegExp("(telegram|t[.]me)", caseSensitive: false).hasMatch(link)) {
+    } else if (RegExp("(telegram|t[.]me)", caseSensitive: false)
+        .hasMatch(link)) {
       iconData = Icons.telegram;
     }
 

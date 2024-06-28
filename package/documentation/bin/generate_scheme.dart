@@ -43,16 +43,18 @@ void main(List<String> args) async {
     respond_schemes,
     directory: Directory(
       join(Directory.current.path, "lib", "scheme"),
-    )..createSync(
-      recursive: true,
-    )..deleteSync(recursive: true)..createSync(
-      recursive: true,
-    ),
+    )
+      ..createSync(
+        recursive: true,
+      )
+      ..deleteSync(recursive: true)
+      ..createSync(
+        recursive: true,
+      ),
   );
 }
 
 List<Map> respond_schemes = [
-  
   {
     "@type": "documentationData",
     "logo": "",

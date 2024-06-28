@@ -9,7 +9,7 @@ import 'package:documentation/widget/markdown/markdown.dart';
 
 class DocumentationPageDocumentation extends StatefulWidget {
   final DocsData docsData;
-  final  List<String> authorUrlSocialMedias;
+  final List<String> authorUrlSocialMedias;
   final DocumentationFooterData documentationFooterData;
   const DocumentationPageDocumentation({
     super.key,
@@ -19,13 +19,15 @@ class DocumentationPageDocumentation extends StatefulWidget {
   });
 
   @override
-  State<DocumentationPageDocumentation> createState() => _DocumentationPageDocumentationState();
+  State<DocumentationPageDocumentation> createState() =>
+      _DocumentationPageDocumentationState();
 }
 
-class _DocumentationPageDocumentationState extends State<DocumentationPageDocumentation> {
+class _DocumentationPageDocumentationState
+    extends State<DocumentationPageDocumentation> {
   GlobalKey globalKey = GlobalKey();
   ScrollController scrollController = ScrollController();
- 
+
   @override
   void initState() {
     super.initState();
@@ -38,9 +40,11 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
     setState(() {});
 
     bool is_succes = await Future(() async {
-      try { 
+      try {
         setState(() {});
-        setContent(contentId: widget.docsData.sidebars.first.navigate_content_id ?? "");
+        setContent(
+            contentId:
+                widget.docsData.sidebars.first.navigate_content_id ?? "");
         return true;
       } catch (e) {
         context.navigator().pop();
@@ -58,7 +62,10 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
   }) {
     navigate_content_id = contentId;
     setState(() {});
-    content = widget.docsData.contents.firstWhere((element) => element.content_id == navigate_content_id).content ?? "";
+    content = widget.docsData.contents
+            .firstWhere((element) => element.content_id == navigate_content_id)
+            .content ??
+        "";
     setState(() {});
   }
 
@@ -131,7 +138,8 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
                       // theme mode
                       return IconButton(
                         onPressed: () {
-                          DocumentationMainApp.generalLibFlutterApp.autoChangeTheme(
+                          DocumentationMainApp.generalLibFlutterApp
+                              .autoChangeTheme(
                             onChangeBrightness: () {
                               return context.mediaQueryData.platformBrightness;
                             },
@@ -140,10 +148,14 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
                         },
                         icon: Icon(
                           () {
-                            if (DocumentationMainApp.generalLibFlutterApp.themeMode == ThemeMode.dark) {
+                            if (DocumentationMainApp
+                                    .generalLibFlutterApp.themeMode ==
+                                ThemeMode.dark) {
                               return Icons.dark_mode;
                             }
-                            if (DocumentationMainApp.generalLibFlutterApp.themeMode == ThemeMode.light) {
+                            if (DocumentationMainApp
+                                    .generalLibFlutterApp.themeMode ==
+                                ThemeMode.light) {
                               return Icons.light_mode;
                             }
 
@@ -212,7 +224,8 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
       );
     }
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics:
+          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight: context.height - globalKey.sizeRenderBox().height,
@@ -228,7 +241,8 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
 
   Widget bodyContent() {
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics:
+          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight: context.height - globalKey.sizeRenderBox().height,

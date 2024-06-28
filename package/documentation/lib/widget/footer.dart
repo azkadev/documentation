@@ -54,7 +54,6 @@ class _FooterWidgetState extends State<FooterWidget> {
                   title: "My Social Media",
                   authorUrlSocialMedias: links,
                 ),
-                
               ];
               for (var element in widget.documentationFooterData.footers) {
                 var footers = element.footer;
@@ -68,7 +67,8 @@ class _FooterWidgetState extends State<FooterWidget> {
                     FooterData footerData = footers[index];
                     return TextButton(
                       onPressed: () async {
-                        await launchUrlString(footerData.url ?? "", mode: LaunchMode.externalApplication);
+                        await launchUrlString(footerData.url ?? "",
+                            mode: LaunchMode.externalApplication);
                       },
                       child: Text(
                         "${footerData.title}".trim(),
@@ -123,7 +123,8 @@ class _FooterWidgetState extends State<FooterWidget> {
       iconData = IonIcons.logo_twitter;
     } else if (RegExp("(github)", caseSensitive: false).hasMatch(link)) {
       iconData = IonIcons.logo_github;
-    } else if (RegExp("(telegram|t[.]me)", caseSensitive: false).hasMatch(link)) {
+    } else if (RegExp("(telegram|t[.]me)", caseSensitive: false)
+        .hasMatch(link)) {
       iconData = Icons.telegram;
     }
 

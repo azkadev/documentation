@@ -1,12 +1,27 @@
 // ignore_for_file: non_constant_identifier_names, depend_on_referenced_packages, empty_catches
 
 // import 'package:hive_flutter/hive_flutter.dart';
+import 'dart:io';
+
 import 'package:general_lib_flutter/general_lib_flutter.dart';
- import 'package:universal_io/io.dart';
+
 import 'package:flutter/material.dart';
 
 MaterialColor randomColors() {
-  List<MaterialColor> colors = [Colors.blue, Colors.blueGrey, Colors.brown, Colors.cyan, Colors.deepOrange, Colors.deepPurple, Colors.green, Colors.grey, Colors.indigo, Colors.lightBlue, Colors.lightGreen, Colors.lime];
+  List<MaterialColor> colors = [
+    Colors.blue,
+    Colors.blueGrey,
+    Colors.brown,
+    Colors.cyan,
+    Colors.deepOrange,
+    Colors.deepPurple,
+    Colors.green,
+    Colors.grey,
+    Colors.indigo,
+    Colors.lightBlue,
+    Colors.lightGreen,
+    Colors.lime
+  ];
   colors.shuffle();
   return colors[0];
 }
@@ -62,7 +77,9 @@ class ProfilePicture extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.theme.dialogBackgroundColor,
         borderRadius: () {
-          return (borderRadius != null) ? borderRadius : BorderRadius.circular(15);
+          return (borderRadius != null)
+              ? borderRadius
+              : BorderRadius.circular(15);
         }(),
         image: image,
         boxShadow: [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
- import 'package:documentation/page/documentation/documentation.dart';
+import 'package:documentation/page/documentation/documentation.dart';
 import 'package:documentation/scheme/scheme.dart';
 import 'package:documentation/documentation_main.dart';
 import 'package:documentation/widget/author.dart';
@@ -12,7 +12,8 @@ class LandingPageDocumentation extends StatefulWidget {
   const LandingPageDocumentation({super.key, required this.documentationData});
 
   @override
-  State<LandingPageDocumentation> createState() => _LandingPageDocumentationState();
+  State<LandingPageDocumentation> createState() =>
+      _LandingPageDocumentationState();
 }
 
 class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
@@ -93,7 +94,8 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                       // theme mode
                       return IconButton(
                         onPressed: () {
-                          DocumentationMainApp.generalLibFlutterApp.autoChangeTheme(
+                          DocumentationMainApp.generalLibFlutterApp
+                              .autoChangeTheme(
                             onChangeBrightness: () {
                               return context.mediaQueryData.platformBrightness;
                             },
@@ -102,10 +104,14 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                         },
                         icon: Icon(
                           () {
-                            if (DocumentationMainApp.generalLibFlutterApp.themeMode == ThemeMode.dark) {
+                            if (DocumentationMainApp
+                                    .generalLibFlutterApp.themeMode ==
+                                ThemeMode.dark) {
                               return Icons.dark_mode;
                             }
-                            if (DocumentationMainApp.generalLibFlutterApp.themeMode == ThemeMode.light) {
+                            if (DocumentationMainApp
+                                    .generalLibFlutterApp.themeMode ==
+                                ThemeMode.light) {
                               return Icons.light_mode;
                             }
 
@@ -123,7 +129,8 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
       ),
       body: SingleChildScrollView(
         controller: scrollController,
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
         child: ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: context.height,
@@ -167,8 +174,9 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                     ),
 
                     //
-                     AuthorWidget(
-                      authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
+                    AuthorWidget(
+                      authorUrlSocialMedias:
+                          widget.documentationData.author_url_social_medias,
                     ),
                   ],
                 ),
@@ -238,9 +246,14 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
               Flexible(
                 child: Builder(
                   builder: (context) {
-                   List<DocsData> docs= widget.documentationData.docs;
+                    List<DocsData> docs = widget.documentationData.docs;
                     return GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 5, crossAxisSpacing: 5, childAspectRatio: 16 / 9),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 5,
+                              crossAxisSpacing: 5,
+                              childAspectRatio: 16 / 9),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: docs.length,
@@ -272,14 +285,18 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: context.theme.dialogBackgroundColor.withOpacity(0.85),
-                                borderRadius: BorderRadiusDirectional.circular(20),
+                                color: context.theme.dialogBackgroundColor
+                                    .withOpacity(0.85),
+                                borderRadius:
+                                    BorderRadiusDirectional.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: context.theme.shadowColor.withAlpha(110),
+                                    color: context.theme.shadowColor
+                                        .withAlpha(110),
                                     spreadRadius: 1,
                                     blurRadius: 7,
-                                    offset: const Offset(0, 3), // changes position of shadow
+                                    offset: const Offset(
+                                        0, 3), // changes position of shadow
                                   ),
                                 ],
                               ),
@@ -291,8 +308,11 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                                       builder: (context) {
                                         return DocumentationPageDocumentation(
                                           docsData: docsData,
-                authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
-                documentationFooterData: widget.documentationData.footer,
+                                          authorUrlSocialMedias: widget
+                                              .documentationData
+                                              .author_url_social_medias,
+                                          documentationFooterData:
+                                              widget.documentationData.footer,
                                         );
                                       },
                                     ),
@@ -311,7 +331,8 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                 ),
               ),
               FooterWidget(
-                authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
+                authorUrlSocialMedias:
+                    widget.documentationData.author_url_social_medias,
                 documentationFooterData: widget.documentationData.footer,
               ),
             ],

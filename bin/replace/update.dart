@@ -42,7 +42,7 @@ import "package:path/path.dart" as path;
 import "package:yaml/yaml.dart" as yaml;
 import "package:yaml_writer/yaml_writer.dart";
 
-String version_package = "0.0.0";
+String version_package = "0.0.1";
 Future<void> pubspecUpdate({
   required File filePubspec,
   required List<String> librarys,
@@ -52,7 +52,7 @@ Future<void> pubspecUpdate({
     Map yaml_code_clone = yaml_code.clone();
 
     yaml_code_clone.addAll({
-      "description": "A sample command-line application.",
+      "description": "A Library for create documentation super easy and fast customizable",
       "version": version_package,
       "repository": "https://github.com/azkadev/documentation",
       "homepage": "https://github.com/azkadev/documentation",

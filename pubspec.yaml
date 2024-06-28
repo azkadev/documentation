@@ -1,12 +1,11 @@
 name: 'documentation_project'
-description: 'A sample command-line application.'
-version: '0.0.0'
+description: 'A Library for create documentation super easy and fast customizable'
+version: '0.0.1'
 repository: 'https://github.com/azkadev/documentation'
 homepage: 'https://github.com/azkadev/documentation'
 issue_tracker: 'https://github.com/azkadev/documentation/issues'
 documentation: 'https://github.com/azkadev/documentation/tree/main/docs'
 funding: 
-  - 'https://github.com/sponsors/azkadev'
   - 'https://github.com/sponsors/azkadev'
 platforms: 
   android: null
@@ -18,7 +17,7 @@ platforms:
 environment: 
   sdk: '>=3.3.3 <4.0.0'
 dependencies: 
-  general_lib: '^0.0.42'
+  general_lib: '^0.0.36'
   mason_logger: '^0.2.11'
   packagex: '^0.0.58'
   path: '^1.9.0'
@@ -29,6 +28,5 @@ dependencies:
 dev_dependencies: 
   lints: '^2.1.0'
   test: '^1.24.0'
-publish_to: 'none'
 dependency_overrides: 
   pointycastle: '3.8.0'

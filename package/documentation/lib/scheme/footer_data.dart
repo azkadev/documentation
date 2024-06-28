@@ -2,21 +2,16 @@
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
-
- 
 class FooterData extends JsonScheme {
-
-  
   FooterData(super.rawData);
-   
+
   static Map get defaultData {
-    return {"@type":"footerData","title":"","url":"","text":""};
+    return {"@type": "footerData", "title": "", "url": "", "text": ""};
   }
 
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -25,16 +20,13 @@ class FooterData extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   String? get title {
     try {
-      if (rawData["title"] is String == false){
+      if (rawData["title"] is String == false) {
         return null;
       }
       return rawData["title"] as String;
@@ -43,16 +35,13 @@ class FooterData extends JsonScheme {
     }
   }
 
-  
   set title(String? value) {
     rawData["title"] = value;
   }
 
-
-  
   String? get url {
     try {
-      if (rawData["url"] is String == false){
+      if (rawData["url"] is String == false) {
         return null;
       }
       return rawData["url"] as String;
@@ -61,16 +50,13 @@ class FooterData extends JsonScheme {
     }
   }
 
-  
   set url(String? value) {
     rawData["url"] = value;
   }
 
-
-  
   String? get text {
     try {
-      if (rawData["text"] is String == false){
+      if (rawData["text"] is String == false) {
         return null;
       }
       return rawData["text"] as String;
@@ -79,38 +65,27 @@ class FooterData extends JsonScheme {
     }
   }
 
-  
   set text(String? value) {
     rawData["text"] = value;
   }
 
-
-  
   static FooterData create({
-
     String special_type = "footerData",
     String? title,
     String? url,
     String? text,
-})  {
+  }) {
     // FooterData footerData = FooterData({
-Map footerData_data_create_json = {
-  
+    Map footerData_data_create_json = {
       "@type": special_type,
       "title": title,
       "url": url,
       "text": text,
+    };
 
+    footerData_data_create_json.removeWhere((key, value) => value == null);
+    FooterData footerData_data_create = FooterData(footerData_data_create_json);
 
-};
-
-
-          footerData_data_create_json.removeWhere((key, value) => value == null);
-FooterData footerData_data_create = FooterData(footerData_data_create_json);
-
-return footerData_data_create;
-
-
-
-      }
+    return footerData_data_create;
+  }
 }

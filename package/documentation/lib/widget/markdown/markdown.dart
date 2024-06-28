@@ -39,7 +39,6 @@ class MarkdownWidget extends StatelessWidget {
               data: snapshot.data!.trim(),
               shrinkWrap: true,
               padding: padding,
-              
               markdownGeneratorConfig: MarkdownGenerator(
                 generators: [
                   mediaGeneratorWithTag,
@@ -125,11 +124,9 @@ class _CallbackDataWidgetState extends State<CallbackDataWidget> {
       onTap: () async {},
       child: Text(
         widget.text,
-        
         style: const TextStyle(
           color: Colors.blue,
         ),
-        
       ),
     );
   }
@@ -164,21 +161,25 @@ class MarkdownTextNodeCustomWidget extends StatefulWidget {
   });
 
   @override
-  State<MarkdownTextNodeCustomWidget> createState() => _MarkdownTextNodeCustomWidgetState();
+  State<MarkdownTextNodeCustomWidget> createState() =>
+      _MarkdownTextNodeCustomWidgetState();
 }
 
-class _MarkdownTextNodeCustomWidgetState extends State<MarkdownTextNodeCustomWidget> {
+class _MarkdownTextNodeCustomWidgetState
+    extends State<MarkdownTextNodeCustomWidget> {
   @override
   Widget build(BuildContext context) {
     String url = () {
-      if (widget.attribute["url"] is String && (widget.attribute["url"] as String).isNotEmpty) {
+      if (widget.attribute["url"] is String &&
+          (widget.attribute["url"] as String).isNotEmpty) {
         return (widget.attribute["url"] as String);
       }
       return "";
     }();
     double? fontSize = () {
       try {
-        double sizeFont = (int.tryParse(widget.attribute["size"] ?? "0") ?? 0).toDouble();
+        double sizeFont =
+            (int.tryParse(widget.attribute["size"] ?? "0") ?? 0).toDouble();
         if (sizeFont > 0) {
           return sizeFont;
         }
@@ -195,9 +196,7 @@ class _MarkdownTextNodeCustomWidgetState extends State<MarkdownTextNodeCustomWid
           // fontFamily: "NotoEmoji",
           color: (url.isNotEmpty) ? Colors.blue : null,
           fontSize: fontSize,
-          
         ),
-        
       );
 
       if (url.isNotEmpty) {

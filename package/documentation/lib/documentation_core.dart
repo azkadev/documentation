@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/extension/build_context.dart';
 import 'package:documentation/page/landing/landing.dart';
 
-
-
 class DocumentationApp extends StatefulWidget {
   final DocumentationData documentationData;
   const DocumentationApp({super.key, required this.documentationData});

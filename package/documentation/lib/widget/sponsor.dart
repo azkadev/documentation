@@ -1,6 +1,6 @@
- // ignore_for_file: unnecessary_string_interpolations, unnecessary_brace_in_string_interps, non_constant_identifier_names
+// ignore_for_file: unnecessary_string_interpolations, unnecessary_brace_in_string_interps, non_constant_identifier_names
 
- import 'package:documentation/scheme/account_data.dart';
+import 'package:documentation/scheme/account_data.dart';
 
 import 'profile_picture.dart';
 import 'package:flutter/cupertino.dart';
@@ -119,7 +119,9 @@ class _SponsorWidgetState extends State<SponsorWidget> {
     required AccountData accountData,
     required void Function()? onPressed,
   }) {
-    String value_data = ("${(accountData.first_name ?? "").trim()} ${(accountData.last_name ?? "").trim()}").trim();
+    String value_data =
+        ("${(accountData.first_name ?? "").trim()} ${(accountData.last_name ?? "").trim()}")
+            .trim();
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -136,7 +138,8 @@ class _SponsorWidgetState extends State<SponsorWidget> {
               nick_name: "${value_data}".trim().toUpperCaseFirstData(),
               height: context.height / 30,
               width: context.height / 30,
-              borderRadius: BorderRadius.all(Radius.circular(context.height / 70)),
+              borderRadius:
+                  BorderRadius.all(Radius.circular(context.height / 70)),
               onPressed: () {},
             ),
           ),

@@ -4,20 +4,27 @@ import "package:general_lib/general_lib.dart";
 
 import "link_data.dart";
 
- 
 class AccountData extends JsonScheme {
-
-  
   AccountData(super.rawData);
-   
+
   static Map get defaultData {
-    return {"@type":"accountData","id":0,"first_name":"","last_name":"","username":"","profile_picture":"","bio":"","social_medias":[{"@type":"linkData","icon":"","title":"","value":""}]};
+    return {
+      "@type": "accountData",
+      "id": 0,
+      "first_name": "",
+      "last_name": "",
+      "username": "",
+      "profile_picture": "",
+      "bio": "",
+      "social_medias": [
+        {"@type": "linkData", "icon": "", "title": "", "value": ""}
+      ]
+    };
   }
 
-  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false){
+      if (rawData["@type"] is String == false) {
         return null;
       }
       return rawData["@type"] as String;
@@ -26,16 +33,13 @@ class AccountData extends JsonScheme {
     }
   }
 
-  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
-
-  
   num? get id {
     try {
-      if (rawData["id"] is num == false){
+      if (rawData["id"] is num == false) {
         return null;
       }
       return rawData["id"] as num;
@@ -44,16 +48,13 @@ class AccountData extends JsonScheme {
     }
   }
 
-  
   set id(num? value) {
     rawData["id"] = value;
   }
 
-
-  
   String? get first_name {
     try {
-      if (rawData["first_name"] is String == false){
+      if (rawData["first_name"] is String == false) {
         return null;
       }
       return rawData["first_name"] as String;
@@ -62,16 +63,13 @@ class AccountData extends JsonScheme {
     }
   }
 
-  
   set first_name(String? value) {
     rawData["first_name"] = value;
   }
 
-
-  
   String? get last_name {
     try {
-      if (rawData["last_name"] is String == false){
+      if (rawData["last_name"] is String == false) {
         return null;
       }
       return rawData["last_name"] as String;
@@ -80,16 +78,13 @@ class AccountData extends JsonScheme {
     }
   }
 
-  
   set last_name(String? value) {
     rawData["last_name"] = value;
   }
 
-
-  
   String? get username {
     try {
-      if (rawData["username"] is String == false){
+      if (rawData["username"] is String == false) {
         return null;
       }
       return rawData["username"] as String;
@@ -98,16 +93,13 @@ class AccountData extends JsonScheme {
     }
   }
 
-  
   set username(String? value) {
     rawData["username"] = value;
   }
 
-
-  
   String? get profile_picture {
     try {
-      if (rawData["profile_picture"] is String == false){
+      if (rawData["profile_picture"] is String == false) {
         return null;
       }
       return rawData["profile_picture"] as String;
@@ -116,16 +108,13 @@ class AccountData extends JsonScheme {
     }
   }
 
-  
   set profile_picture(String? value) {
     rawData["profile_picture"] = value;
   }
 
-
-  
   String? get bio {
     try {
-      if (rawData["bio"] is String == false){
+      if (rawData["bio"] is String == false) {
         return null;
       }
       return rawData["bio"] as String;
@@ -134,34 +123,29 @@ class AccountData extends JsonScheme {
     }
   }
 
-  
   set bio(String? value) {
     rawData["bio"] = value;
   }
 
-  
   List<LinkData> get social_medias {
     try {
-      if (rawData["social_medias"] is List == false){
+      if (rawData["social_medias"] is List == false) {
         return [];
       }
-      return (rawData["social_medias"] as List).map((e) => LinkData(e as Map)).toList().cast<LinkData>();
+      return (rawData["social_medias"] as List)
+          .map((e) => LinkData(e as Map))
+          .toList()
+          .cast<LinkData>();
     } catch (e) {
       return [];
     }
   }
 
-
-  
   set social_medias(List<LinkData> values) {
     rawData["social_medias"] = values.map((value) => value.toJson()).toList();
   }
 
-
-
-  
   static AccountData create({
-
     String special_type = "accountData",
     num? id,
     String? first_name,
@@ -169,11 +153,10 @@ class AccountData extends JsonScheme {
     String? username,
     String? profile_picture,
     String? bio,
-      List<LinkData>? social_medias,
-})  {
+    List<LinkData>? social_medias,
+  }) {
     // AccountData accountData = AccountData({
-Map accountData_data_create_json = {
-  
+    Map accountData_data_create_json = {
       "@type": special_type,
       "id": id,
       "first_name": first_name,
@@ -181,18 +164,13 @@ Map accountData_data_create_json = {
       "username": username,
       "profile_picture": profile_picture,
       "bio": bio,
-      "social_medias": (social_medias != null)? social_medias.toJson(): null,
+      "social_medias": (social_medias != null) ? social_medias.toJson() : null,
+    };
 
+    accountData_data_create_json.removeWhere((key, value) => value == null);
+    AccountData accountData_data_create =
+        AccountData(accountData_data_create_json);
 
-};
-
-
-          accountData_data_create_json.removeWhere((key, value) => value == null);
-AccountData accountData_data_create = AccountData(accountData_data_create_json);
-
-return accountData_data_create;
-
-
-
-      }
+    return accountData_data_create;
+  }
 }
