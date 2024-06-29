@@ -106,27 +106,44 @@ class _ImagesWidgetState extends State<MediasWidget> {
     required bool isMoreData,
   }) {
     bool is_youtube = false;
-    Image image = () {
+    Image? image = () {
+      if (image_data.trim().isEmpty) {
+        return null;
+      }
       if (RegExp(r"^(http(s)?:)", caseSensitive: false).hasMatch(image_data)) {
         if (RegExp("(youtube.com)", caseSensitive: false).hasMatch(image_data)) {
           is_youtube = true;
         }
         return Image.network(
           image_data,
+          errorBuilder: (context, error, stackTrace) {
+            return const SizedBox.shrink();
+          },
         );
       }
       if (RegExp(r"^(assets|packages)", caseSensitive: false).hasMatch(image_data)) {
         return Image.asset(
           image_data,
+          errorBuilder: (context, error, stackTrace) {
+            return const SizedBox.shrink();
+          },
         );
       }
-      return Image.file(File(image_data));
+      return Image.file(
+        File(image_data),
+        errorBuilder: (context, error, stackTrace) {
+          return const SizedBox.shrink();
+        },
+      );
     }();
     if (isMoreData == false) {
       return MaterialButton(
         onPressed: () {
           if (is_youtube) {
             launchUrlString(image_data, mode: LaunchMode.externalApplication);
+            return;
+          }
+          if (image == null) {
             return;
           }
           Navigator.push(
@@ -154,7 +171,7 @@ class _ImagesWidgetState extends State<MediasWidget> {
                 fontSize: 20,
               ),
             ),
-            image,
+            image ?? const SizedBox.shrink(),
           ],
         ),
       );
@@ -175,10 +192,15 @@ class _ImagesWidgetState extends State<MediasWidget> {
           BoxShadow(color: Colors.black12, blurRadius: 10),
           BoxShadow(color: Colors.black12, blurRadius: 10),
         ],
-        image: DecorationImage(
-          fit: BoxFit.fill,
-          image: image.image,
-        ),
+        image: () {
+          if (image == null) {
+            return null;
+          }
+          return DecorationImage(
+            fit: BoxFit.fill,
+            image: image.image,
+          );
+        }(),
       ),
       clipBehavior: Clip.antiAlias,
       child: MaterialButton(
@@ -189,6 +211,9 @@ class _ImagesWidgetState extends State<MediasWidget> {
         onPressed: () async {
           if (is_youtube) {
             launchUrlString(image_data, mode: LaunchMode.externalApplication);
+            return;
+          }
+          if (image == null) {
             return;
           }
           Navigator.push(
@@ -217,7 +242,7 @@ class FullScreenPage extends StatefulWidget {
     required this.dark,
   });
 
-  final Image child;
+  final Widget child;
   final bool dark;
 
   @override

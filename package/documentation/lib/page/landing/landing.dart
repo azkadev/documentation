@@ -16,8 +16,7 @@ class LandingPageDocumentation extends StatefulWidget {
   });
 
   @override
-  State<LandingPageDocumentation> createState() =>
-      _LandingPageDocumentationState();
+  State<LandingPageDocumentation> createState() => _LandingPageDocumentationState();
 }
 
 class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
@@ -108,12 +107,10 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                         },
                         icon: Icon(
                           () {
-                            if (widget.generalLibFlutterApp.themeMode ==
-                                ThemeMode.dark) {
+                            if (widget.generalLibFlutterApp.themeMode == ThemeMode.dark) {
                               return Icons.dark_mode;
                             }
-                            if (widget.generalLibFlutterApp.themeMode ==
-                                ThemeMode.light) {
+                            if (widget.generalLibFlutterApp.themeMode == ThemeMode.light) {
                               return Icons.light_mode;
                             }
 
@@ -131,8 +128,7 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
       ),
       body: SingleChildScrollView(
         controller: scrollController,
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         child: ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: context.height,
@@ -154,8 +150,11 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      "${widget.documentationData.logo}",
+                    Visibility(
+                      visible: "${widget.documentationData.logo}".trim().isNotEmpty,
+                      child: Image.asset(
+                        "${widget.documentationData.logo}",
+                      ),
                     ),
                     Text(
                       "${widget.documentationData.title}".trim(),
@@ -177,8 +176,7 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
 
                     //
                     AuthorDocumentationWidget(
-                      authorUrlSocialMedias:
-                          widget.documentationData.author_url_social_medias,
+                      authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
                     ),
                   ],
                 ),
@@ -250,12 +248,7 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                   builder: (context) {
                     List<DocsData> docs = widget.documentationData.docs;
                     return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              mainAxisSpacing: 5,
-                              crossAxisSpacing: 5,
-                              childAspectRatio: 16 / 9),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 5, crossAxisSpacing: 5, childAspectRatio: 16 / 9),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: docs.length,
@@ -287,18 +280,14 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: context.theme.dialogBackgroundColor
-                                    .withOpacity(0.85),
-                                borderRadius:
-                                    BorderRadiusDirectional.circular(20),
+                                color: context.theme.dialogBackgroundColor.withOpacity(0.85),
+                                borderRadius: BorderRadiusDirectional.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: context.theme.shadowColor
-                                        .withAlpha(110),
+                                    color: context.theme.shadowColor.withAlpha(110),
                                     spreadRadius: 1,
                                     blurRadius: 7,
-                                    offset: const Offset(
-                                        0, 3), // changes position of shadow
+                                    offset: const Offset(0, 3), // changes position of shadow
                                   ),
                                 ],
                               ),
@@ -310,13 +299,9 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                                       builder: (context) {
                                         return DocumentationPageDocumentation(
                                           docsData: docsData,
-                                          authorUrlSocialMedias: widget
-                                              .documentationData
-                                              .author_url_social_medias,
-                                          documentationFooterData:
-                                              widget.documentationData.footer,
-                                          generalLibFlutterApp:
-                                              widget.generalLibFlutterApp,
+                                          authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
+                                          documentationFooterData: widget.documentationData.footer,
+                                          generalLibFlutterApp: widget.generalLibFlutterApp,
                                         );
                                       },
                                     ),
@@ -335,8 +320,7 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                 ),
               ),
               FooterDocumentationWidget(
-                authorUrlSocialMedias:
-                    widget.documentationData.author_url_social_medias,
+                authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
                 documentationFooterData: widget.documentationData.footer,
               ),
             ],

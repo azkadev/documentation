@@ -7,10 +7,11 @@ import 'package:general_lib_flutter/general_lib_flutter.dart';
 class DocumentationApp extends StatefulWidget {
   final DocumentationData documentationData;
   final GeneralLibFlutterApp generalLibFlutterApp;
-  const DocumentationApp(
-      {super.key,
-      required this.documentationData,
-      required this.generalLibFlutterApp});
+  const DocumentationApp({
+    super.key,
+    required this.documentationData,
+    required this.generalLibFlutterApp,
+  });
 
   @override
   State<DocumentationApp> createState() => _DocumentationAppState();

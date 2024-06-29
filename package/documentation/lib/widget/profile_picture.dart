@@ -3,10 +3,11 @@
 // import 'package:hive_flutter/hive_flutter.dart';
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 import 'package:flutter/material.dart';
- 
+
 class ProfilePictureDocumentationWidget extends StatelessWidget {
   final String pathImage;
   final String nick_name;
@@ -44,9 +45,17 @@ class ProfilePictureDocumentationWidget extends StatelessWidget {
         fit: BoxFit.cover,
         image: () {
           if (RegExp(r"^(http(s)?)").hasMatch(pathImage)) {
-            return Image.network(pathImage).image;
+            return Image.network(pathImage, 
+          errorBuilder: (context, error, stackTrace) {
+            return const SizedBox.shrink();
+          },).image;
           }
-          return Image.asset(pathImage).image;
+
+          
+          return Image.asset(pathImage, 
+          errorBuilder: (context, error, stackTrace) {
+            return const SizedBox.shrink();
+          },).image;
         }(),
         // image: AssetImage(pathImage),
         onError: (errDetails, error) {},
@@ -58,9 +67,7 @@ class ProfilePictureDocumentationWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.theme.dialogBackgroundColor,
         borderRadius: () {
-          return (borderRadius != null)
-              ? borderRadius
-              : BorderRadius.circular(15);
+          return (borderRadius != null) ? borderRadius : BorderRadius.circular(15);
         }(),
         image: image,
         boxShadow: [

@@ -3,7 +3,6 @@ description: 'A Library for create documentation super easy and fast customizabl
 version: '0.0.2'
 environment: 
   sdk: '>=3.3.3 <4.0.0'
-  flutter: ">=1.17.0"
 dependencies: 
   flutter: 
     sdk: 'flutter'

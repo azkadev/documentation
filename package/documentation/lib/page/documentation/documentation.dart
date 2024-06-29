@@ -20,12 +20,10 @@ class DocumentationPageDocumentation extends StatefulWidget {
   });
 
   @override
-  State<DocumentationPageDocumentation> createState() =>
-      _DocumentationPageDocumentationState();
+  State<DocumentationPageDocumentation> createState() => _DocumentationPageDocumentationState();
 }
 
-class _DocumentationPageDocumentationState
-    extends State<DocumentationPageDocumentation> {
+class _DocumentationPageDocumentationState extends State<DocumentationPageDocumentation> {
   GlobalKey globalKey = GlobalKey();
   ScrollController scrollController = ScrollController();
 
@@ -43,9 +41,7 @@ class _DocumentationPageDocumentationState
     bool is_succes = await Future(() async {
       try {
         setState(() {});
-        setContent(
-            contentId:
-                widget.docsData.sidebars.first.navigate_content_id ?? "");
+        setContent(contentId: widget.docsData.sidebars.first.navigate_content_id ?? "");
         return true;
       } catch (e) {
         context.navigator().pop();
@@ -63,10 +59,7 @@ class _DocumentationPageDocumentationState
   }) {
     navigate_content_id = contentId;
     setState(() {});
-    content = widget.docsData.contents
-            .firstWhere((element) => element.content_id == navigate_content_id)
-            .content ??
-        "";
+    content = widget.docsData.contents.firstWhere((element) => element.content_id == navigate_content_id).content ?? "";
     setState(() {});
   }
 
@@ -148,12 +141,10 @@ class _DocumentationPageDocumentationState
                         },
                         icon: Icon(
                           () {
-                            if (widget.generalLibFlutterApp.themeMode ==
-                                ThemeMode.dark) {
+                            if (widget.generalLibFlutterApp.themeMode == ThemeMode.dark) {
                               return Icons.dark_mode;
                             }
-                            if (widget.generalLibFlutterApp.themeMode ==
-                                ThemeMode.light) {
+                            if (widget.generalLibFlutterApp.themeMode == ThemeMode.light) {
                               return Icons.light_mode;
                             }
 
@@ -216,14 +207,16 @@ class _DocumentationPageDocumentationState
           },
           child: Text(
             "${element.title}",
-            style: TextStyle(color: context.theme.indicatorColor, fontSize: 25),
+            style: TextStyle(
+              color: (element.navigate_content_id == navigate_content_id) ? context.theme.indicatorColor : context.theme.cardColor ,
+              fontSize: 25,
+            ),
           ),
         ),
       );
     }
     return SingleChildScrollView(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight: context.height - globalKey.sizeRenderBox().height,
@@ -239,8 +232,7 @@ class _DocumentationPageDocumentationState
 
   Widget bodyContent() {
     return SingleChildScrollView(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight: context.height - globalKey.sizeRenderBox().height,
