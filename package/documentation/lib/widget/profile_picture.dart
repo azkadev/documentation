@@ -6,27 +6,8 @@ import 'dart:io';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
 import 'package:flutter/material.dart';
-
-MaterialColor randomColors() {
-  List<MaterialColor> colors = [
-    Colors.blue,
-    Colors.blueGrey,
-    Colors.brown,
-    Colors.cyan,
-    Colors.deepOrange,
-    Colors.deepPurple,
-    Colors.green,
-    Colors.grey,
-    Colors.indigo,
-    Colors.lightBlue,
-    Colors.lightGreen,
-    Colors.lime
-  ];
-  colors.shuffle();
-  return colors[0];
-}
-
-class ProfilePicture extends StatelessWidget {
+ 
+class ProfilePictureDocumentationWidget extends StatelessWidget {
   final String pathImage;
   final String nick_name;
   final double width;
@@ -35,7 +16,7 @@ class ProfilePicture extends StatelessWidget {
   final void Function()? onPressed;
   final void Function()? onLongPress;
   final void Function(bool data)? onHighlightChanged;
-  const ProfilePicture({
+  const ProfilePictureDocumentationWidget({
     super.key,
     required this.pathImage,
     required this.width,

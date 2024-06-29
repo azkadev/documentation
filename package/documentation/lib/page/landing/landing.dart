@@ -176,7 +176,7 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                     ),
 
                     //
-                    AuthorWidget(
+                    AuthorDocumentationWidget(
                       authorUrlSocialMedias:
                           widget.documentationData.author_url_social_medias,
                     ),
@@ -185,7 +185,7 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
               ),
               Padding(
                 padding: const EdgeInsets.all(20),
-                child: MarkdownWidget(
+                child: MarkdownDocumentationWidget(
                   alignment: Alignment.center,
                   text: () async {
                     return (widget.documentationData.content ?? "").trim();
@@ -334,7 +334,7 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                   },
                 ),
               ),
-              FooterWidget(
+              FooterDocumentationWidget(
                 authorUrlSocialMedias:
                     widget.documentationData.author_url_social_medias,
                 documentationFooterData: widget.documentationData.footer,

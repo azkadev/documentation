@@ -108,16 +108,14 @@ class _ImagesWidgetState extends State<MediasWidget> {
     bool is_youtube = false;
     Image image = () {
       if (RegExp(r"^(http(s)?:)", caseSensitive: false).hasMatch(image_data)) {
-        if (RegExp("(youtube.com)", caseSensitive: false)
-            .hasMatch(image_data)) {
+        if (RegExp("(youtube.com)", caseSensitive: false).hasMatch(image_data)) {
           is_youtube = true;
         }
         return Image.network(
           image_data,
         );
       }
-      if (RegExp(r"^(assets|packages)", caseSensitive: false)
-          .hasMatch(image_data)) {
+      if (RegExp(r"^(assets|packages)", caseSensitive: false).hasMatch(image_data)) {
         return Image.asset(
           image_data,
         );

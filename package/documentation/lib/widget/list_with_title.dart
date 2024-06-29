@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class ListWithWidget extends StatefulWidget {
+class ListWithDocumentationWidget extends StatefulWidget {
   final Axis direction;
   final bool isShowTitle;
   final String title;
   final Widget Function(BuildContext context, int index) builder;
   final int itemCount;
   final List<String> authorUrlSocialMedias;
-  const ListWithWidget({
+  const ListWithDocumentationWidget({
     super.key,
     this.direction = Axis.horizontal,
     this.isShowTitle = true,
@@ -21,10 +21,10 @@ class ListWithWidget extends StatefulWidget {
   });
 
   @override
-  State<ListWithWidget> createState() => _ListWithWidgetState();
+  State<ListWithDocumentationWidget> createState() => _ListWithDocumentationWidgetState();
 }
 
-class _ListWithWidgetState extends State<ListWithWidget> {
+class _ListWithDocumentationWidgetState extends State<ListWithDocumentationWidget> {
   @override
   Widget build(BuildContext context) {
     return sponsorsWidget();

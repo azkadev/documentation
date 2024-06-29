@@ -12,11 +12,11 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'images_node.dart';
 // import 'package:gmss_app/widget/widget.dart';
 
-class MarkdownWidget extends StatelessWidget {
+class MarkdownDocumentationWidget extends StatelessWidget {
   final Future<String> Function() text;
   final EdgeInsets? padding;
   final Alignment alignment;
-  const MarkdownWidget({
+  const MarkdownDocumentationWidget({
     super.key,
     this.padding,
     required this.alignment,

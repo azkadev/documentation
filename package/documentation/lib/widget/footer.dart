@@ -10,20 +10,20 @@ import 'package:documentation/widget/author.dart';
 import 'package:documentation/widget/list_with_title.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class FooterWidget extends StatefulWidget {
+class FooterDocumentationWidget extends StatefulWidget {
   final List<String> authorUrlSocialMedias;
   final DocumentationFooterData documentationFooterData;
-  const FooterWidget({
+  const FooterDocumentationWidget({
     super.key,
     required this.authorUrlSocialMedias,
     required this.documentationFooterData,
   });
 
   @override
-  State<FooterWidget> createState() => _FooterWidgetState();
+  State<FooterDocumentationWidget> createState() => _FooterDocumentationWidgetState();
 }
 
-class _FooterWidgetState extends State<FooterWidget> {
+class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
   @override
   Widget build(BuildContext context) {
     return sponsorsWidget();
@@ -48,7 +48,7 @@ class _FooterWidgetState extends State<FooterWidget> {
           child: Builder(
             builder: (context) {
               List<Widget> children = [
-                AuthorWidget(
+                AuthorDocumentationWidget(
                   direction: Axis.vertical,
                   isShowTitle: true,
                   title: "My Social Media",
@@ -57,7 +57,7 @@ class _FooterWidgetState extends State<FooterWidget> {
               ];
               for (var element in widget.documentationFooterData.footers) {
                 var footers = element.footer;
-                children.add(ListWithWidget(
+                children.add(ListWithDocumentationWidget(
                   itemCount: footers.length,
                   isShowTitle: true,
                   title: "${element.title}".trim(),

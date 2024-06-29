@@ -251,14 +251,14 @@ class _DocumentationPageDocumentationState
           children: [
             Padding(
               padding: const EdgeInsets.all(20),
-              child: MarkdownWidget(
+              child: MarkdownDocumentationWidget(
                 alignment: Alignment.center,
                 text: () async {
                   return content.trim();
                 },
               ),
             ),
-            FooterWidget(
+            FooterDocumentationWidget(
               authorUrlSocialMedias: widget.authorUrlSocialMedias,
               documentationFooterData: widget.documentationFooterData,
             ),

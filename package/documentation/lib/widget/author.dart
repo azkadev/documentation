@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class AuthorWidget extends StatefulWidget {
+class AuthorDocumentationWidget extends StatefulWidget {
   final Axis direction;
   final bool isShowTitle;
   final String title;
   final List<String> authorUrlSocialMedias;
-  const AuthorWidget(
+  const AuthorDocumentationWidget(
       {super.key,
       this.direction = Axis.horizontal,
       this.isShowTitle = true,
@@ -20,10 +20,10 @@ class AuthorWidget extends StatefulWidget {
       required this.authorUrlSocialMedias});
 
   @override
-  State<AuthorWidget> createState() => _AuthorWidgetState();
+  State<AuthorDocumentationWidget> createState() => _AuthorDocumentationWidgetState();
 }
 
-class _AuthorWidgetState extends State<AuthorWidget> {
+class _AuthorDocumentationWidgetState extends State<AuthorDocumentationWidget> {
   @override
   Widget build(BuildContext context) {
     return sponsorsWidget();

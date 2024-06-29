@@ -8,15 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 
-class SponsorWidget extends StatefulWidget {
+class SponsorDocumentationWidget extends StatefulWidget {
   final List<AccountData> sponsor;
-  const SponsorWidget({super.key, required this.sponsor});
+  const SponsorDocumentationWidget({super.key, required this.sponsor});
 
   @override
-  State<SponsorWidget> createState() => _SponsorWidgetState();
+  State<SponsorDocumentationWidget> createState() => _SponsorDocumentationWidgetState();
 }
 
-class _SponsorWidgetState extends State<SponsorWidget> {
+class _SponsorDocumentationWidgetState extends State<SponsorDocumentationWidget> {
   @override
   Widget build(BuildContext context) {
     return sponsorsWidget();
@@ -133,7 +133,7 @@ class _SponsorWidgetState extends State<SponsorWidget> {
         children: [
           Padding(
             padding: const EdgeInsets.all(5),
-            child: ProfilePicture(
+            child: ProfilePictureDocumentationWidget(
               pathImage: accountData.profile_picture ?? "",
               nick_name: "${value_data}".trim().toUpperCaseFirstData(),
               height: context.height / 30,
