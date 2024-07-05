@@ -67,7 +67,7 @@ class _DocumentationAppState extends State<DocumentationApp> {
     Future(() async {
       await Future.delayed(Durations.extralong4);
       // ignore: use_build_context_synchronously
-      context.navigator().push(MaterialPageRoute(
+      context.navigator().pushReplacement(MaterialPageRoute(
         builder: (context) {
           return LandingPageDocumentation(
             documentationData: widget.documentationData,

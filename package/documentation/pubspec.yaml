@@ -3,15 +3,15 @@ description: 'A Library for create documentation super easy and fast customizabl
 version: '0.0.2'
 environment: 
   sdk: '>=3.3.3 <4.0.0'
-  flutter: ">=1.17.0"
+  flutter: '>=1.17.0'
 dependencies: 
   flutter: 
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
   path: '^1.9.0'
   telegram_client: '^0.8.20'
-  general_lib: '^0.0.36'
-  general_lib_flutter: '^0.0.19'
+  general_lib: '^0.0.42'
+  general_lib_flutter: '^0.0.22'
   markdown_flutter: '^0.0.7'
   markdown_widget: '^2.3.2+2'
   carousel_slider: '^4.2.1'

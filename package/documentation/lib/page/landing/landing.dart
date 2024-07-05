@@ -105,56 +105,69 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
               SizedBox(
                 height: context.mediaQueryData.padding.top,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () async {
-                      context.navigator().pushReplacement(MaterialPageRoute(
-                        builder: (context) {
-                          return LandingPageDocumentation(
-                            documentationData: widget.documentationData,
-                            generalLibFlutterApp: widget.generalLibFlutterApp,
-                          );
-                        },
-                      ));
-                    },
-                    child: Text(
-                      "${widget.documentationData.title}".trim(),
-                      style: TextStyle(
-                        color: context.theme.indicatorColor,
+              Builder(
+                builder: (context) {
+                  List<Widget> children = [
+                    TextButton(
+                      onPressed: () async {
+                        context.navigator().pushReplacement(MaterialPageRoute(
+                          builder: (context) {
+                            return LandingPageDocumentation(
+                              documentationData: widget.documentationData,
+                              generalLibFlutterApp: widget.generalLibFlutterApp,
+                            );
+                          },
+                        ));
+                      },
+                      child: Text(
+                        "${widget.documentationData.title}".trim(),
+                        style: TextStyle(
+                          color: context.theme.indicatorColor,
+                        ),
                       ),
                     ),
-                  ),
-                  // auto change theme
-                  Builder(
-                    builder: (context) {
-                      // theme mode
-                      return IconButton(
-                        onPressed: () {
-                          widget.generalLibFlutterApp.autoChangeTheme(
-                            onChangeBrightness: () {
-                              return context.mediaQueryData.platformBrightness;
-                            },
-                          );
-                          setState(() {});
-                        },
-                        icon: Icon(
-                          () {
-                            if (widget.generalLibFlutterApp.themeMode == ThemeMode.dark) {
-                              return Icons.dark_mode;
-                            }
-                            if (widget.generalLibFlutterApp.themeMode == ThemeMode.light) {
-                              return Icons.light_mode;
-                            }
+                    // auto change theme
+                    Builder(
+                      builder: (context) {
+                        // theme mode
+                        return IconButton(
+                          onPressed: () {
+                            widget.generalLibFlutterApp.autoChangeTheme(
+                              onChangeBrightness: () {
+                                return context.mediaQueryData.platformBrightness;
+                              },
+                            );
+                            setState(() {});
+                          },
+                          icon: Icon(
+                            () {
+                              if (widget.generalLibFlutterApp.themeMode == ThemeMode.dark) {
+                                return Icons.dark_mode;
+                              }
+                              if (widget.generalLibFlutterApp.themeMode == ThemeMode.light) {
+                                return Icons.light_mode;
+                              }
 
-                            return Icons.auto_mode;
-                          }(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                              return Icons.auto_mode;
+                            }(),
+                          ),
+                        );
+                      },
+                    ),
+                  ];
+                  if (context.navigator().canPop()) {
+                    children.insert(
+                      0,
+                      IconButton(
+                        onPressed: () {
+                          context.navigator().pop();
+                        },
+                        icon: Icon(Icons.arrow_back),
+                      ),
+                    );
+                  }
+                  return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: children);
+                },
               ),
             ],
           ),
