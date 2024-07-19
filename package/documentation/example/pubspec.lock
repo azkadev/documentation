@@ -299,18 +299,18 @@ packages:
     dependency: "direct main"
     description:
       name: general_lib
-      sha256: "31a7b5d3ddecf4f2cbec40f63343dac1394a6d66354ec95f82c6e2aa70a4237d"
+      sha256: f968f3bee797cbdd3b3282b1842e3674f7a0e07cad6326996982d1b1bd56f5ac
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.42"
+    version: "0.0.43"
   general_lib_flutter:
     dependency: "direct main"
     description:
       name: general_lib_flutter
-      sha256: "77db2260e6e7c6336442ce040e7f87b6175c945904b459dc864f63f5229bf791"
+      sha256: "4d7c0eb58c127256f9a56fa42db9e949212d804bf7dbc88ddb6c8b98a7a47863"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.22"
+    version: "0.0.24"
   glob:
     dependency: transitive
     description:
@@ -544,13 +544,13 @@ packages:
     source: hosted
     version: "2.1.8"
   pointycastle:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: pointycastle
-      sha256: "4be0097fcf3fd3e8449e53730c631200ebc7b88016acecab2b0da2f0149222fe"
+      sha256: "70fe966348fe08c34bf929582f1d8247d9d9408130723206472b4687227e4333"
       url: "https://pub.dev"
     source: hosted
-    version: "3.9.1"
+    version: "3.8.0"
   pub_semver:
     dependency: transitive
     description:
@@ -640,10 +640,10 @@ packages:
     dependency: transitive
     description:
       name: telegram_client
-      sha256: "80ed440be0a52bd2ad740961ecf7059bf0b8e9d2028232f4e86fd65c71470098"
+      sha256: b99c9f0a8479d7893f5db30b1f0a6c3712b07ae3ee3f7136ba7fd922c6919abd
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.20"
+    version: "0.8.21"
   term_glyph:
     dependency: transitive
     description:
@@ -861,5 +861,5 @@ packages:
     source: hosted
     version: "2.0.0"
 sdks:
-  dart: ">=3.3.4 <4.0.0"
+  dart: ">=3.3.3 <4.0.0"
   flutter: ">=3.19.0"

@@ -101,8 +101,7 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
                     FooterData footerData = footers[index];
                     return TextButton(
                       onPressed: () async {
-                        await launchUrlString(footerData.url ?? "",
-                            mode: LaunchMode.externalApplication);
+                        await launchUrlString(footerData.url ?? "", mode: LaunchMode.externalApplication);
                       },
                       child: Text(
                         "${footerData.title}".trim(),
@@ -157,8 +156,7 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
       iconData = IonIcons.logo_twitter;
     } else if (RegExp("(github)", caseSensitive: false).hasMatch(link)) {
       iconData = IonIcons.logo_github;
-    } else if (RegExp("(telegram|t[.]me)", caseSensitive: false)
-        .hasMatch(link)) {
+    } else if (RegExp("(telegram|t[.]me)", caseSensitive: false).hasMatch(link)) {
       iconData = Icons.telegram;
     }
 
@@ -173,11 +171,12 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-            padding: const EdgeInsets.all(5),
-            child: Icon(
-              iconData,
-              color: context.theme.indicatorColor,
-            )),
+          padding: const EdgeInsets.all(5),
+          child: Icon(
+            iconData,
+            color: context.theme.indicatorColor,
+          ),
+        ),
         const SizedBox(
           width: 5,
         ),

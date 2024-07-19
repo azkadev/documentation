@@ -292,18 +292,18 @@ packages:
     dependency: "direct main"
     description:
       name: general_lib
-      sha256: "31a7b5d3ddecf4f2cbec40f63343dac1394a6d66354ec95f82c6e2aa70a4237d"
+      sha256: f968f3bee797cbdd3b3282b1842e3674f7a0e07cad6326996982d1b1bd56f5ac
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.42"
+    version: "0.0.43"
   general_lib_flutter:
     dependency: "direct main"
     description:
       name: general_lib_flutter
-      sha256: "77db2260e6e7c6336442ce040e7f87b6175c945904b459dc864f63f5229bf791"
+      sha256: "4d7c0eb58c127256f9a56fa42db9e949212d804bf7dbc88ddb6c8b98a7a47863"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.22"
+    version: "0.0.24"
   glob:
     dependency: transitive
     description:
@@ -633,10 +633,10 @@ packages:
     dependency: "direct main"
     description:
       name: telegram_client
-      sha256: "80ed440be0a52bd2ad740961ecf7059bf0b8e9d2028232f4e86fd65c71470098"
+      sha256: b99c9f0a8479d7893f5db30b1f0a6c3712b07ae3ee3f7136ba7fd922c6919abd
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.20"
+    version: "0.8.21"
   term_glyph:
     dependency: transitive
     description:
