@@ -9,7 +9,7 @@ dependencies:
     sdk: 'flutter'
   cupertino_icons: '^1.0.6'
   path: '^1.9.0'
-  telegram_client: '^0.8.21'
+  # telegram_client: '^0.8.21'
   general_lib: '^0.0.43'
   general_lib_flutter: '^0.0.24'
   markdown_flutter: '^0.0.7'
@@ -20,6 +20,7 @@ dependencies:
   flutter_hicons: '^0.1.0'
   url_launcher: '^6.2.6'
   cool_alert: '^2.0.1'
+
 dev_dependencies: 
   flutter_test: 
     sdk: 'flutter'

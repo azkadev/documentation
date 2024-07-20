@@ -1,59 +1,23 @@
-/* <!-- START LICENSE -->
-
-
-This Software / Program / Source Code Created By Developer From Company GLOBAL CORPORATION
-Social Media:
-
-   - Youtube: https://youtube.com/@Global_Corporation 
-   - Github: https://github.com/globalcorporation
-   - TELEGRAM: https://t.me/GLOBAL_CORP_ORG_BOT
-
-All code script in here created 100% original without copy / steal from other code if we copy we add description source at from top code
-
-If you wan't edit you must add credit me (don't change)
-
-If this Software / Program / Source Code has you
-
-Jika Program ini milik anda dari hasil beli jasa developer di (Global Corporation / apapun itu dari turunan itu jika ada kesalahan / bug / ingin update segera lapor ke sub)
-
-Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di slebew jangan lapor di GLOBAL CORPORATION!
-
-Jika ada kendala program ini (Pastikan sebelum deal project tidak ada negosiasi harga)
-Karena jika ada negosiasi harga kemungkinan
-
-1. Software Ada yang di kurangin
-2. Informasi tidak lengkap
-3. Bantuan Tidak Bisa remote / full time (Ada jeda)
-
-Sebelum program ini sampai ke pembeli developer kami sudah melakukan testing
-
-jadi sebelum nego kami sudah melakukan berbagai konsekuensi jika nego tidak sesuai ? 
-Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba tiba di potong akhirnya bantuan / software kadang tidak lengkap
-
-
-<!-- END LICENSE --> */
 // ignore_for_file: non_constant_identifier_names, unused_import
 import "package:general_lib/general_lib.dart";
 // import "dart:convert";
 
 import "footer_data.dart";
 
+ 
 class FootersData extends JsonScheme {
-  FootersData(super.rawData);
 
+  
+  FootersData(super.rawData);
+   
   static Map get defaultData {
-    return {
-      "@type": "footersData",
-      "title": "",
-      "footer": [
-        {"@type": "footerData", "text": "", "url": ""}
-      ]
-    };
+    return {"@type":"footersData","title":"","footer":[{"@type":"footerData","text":"","url":""}]};
   }
 
+  
   String? get special_type {
     try {
-      if (rawData["@type"] is String == false) {
+      if (rawData["@type"] is String == false){
         return null;
       }
       return rawData["@type"] as String;
@@ -62,13 +26,16 @@ class FootersData extends JsonScheme {
     }
   }
 
+  
   set special_type(String? value) {
     rawData["@type"] = value;
   }
 
+
+  
   String? get title {
     try {
-      if (rawData["title"] is String == false) {
+      if (rawData["title"] is String == false){
         return null;
       }
       return rawData["title"] as String;
@@ -77,44 +44,55 @@ class FootersData extends JsonScheme {
     }
   }
 
+  
   set title(String? value) {
     rawData["title"] = value;
   }
 
+  
   List<FooterData> get footer {
     try {
-      if (rawData["footer"] is List == false) {
+      if (rawData["footer"] is List == false){
         return [];
       }
-      return (rawData["footer"] as List)
-          .map((e) => FooterData(e as Map))
-          .toList()
-          .cast<FooterData>();
+      return (rawData["footer"] as List).map((e) => FooterData(e as Map)).toList().cast<FooterData>();
     } catch (e) {
       return [];
     }
   }
 
+
+  
   set footer(List<FooterData> values) {
     rawData["footer"] = values.map((value) => value.toJson()).toList();
   }
 
+
+
+  
   static FootersData create({
+
     String special_type = "footersData",
     String? title,
-    List<FooterData>? footer,
-  }) {
+      List<FooterData>? footer,
+})  {
     // FootersData footersData = FootersData({
-    Map footersData_data_create_json = {
+Map footersData_data_create_json = {
+  
       "@type": special_type,
       "title": title,
-      "footer": (footer != null) ? footer.toJson() : null,
-    };
+      "footer": (footer != null)? footer.toJson(): null,
 
-    footersData_data_create_json.removeWhere((key, value) => value == null);
-    FootersData footersData_data_create =
-        FootersData(footersData_data_create_json);
 
-    return footersData_data_create;
-  }
+};
+
+
+          footersData_data_create_json.removeWhere((key, value) => value == null);
+FootersData footersData_data_create = FootersData(footersData_data_create_json);
+
+return footersData_data_create;
+
+
+
+      }
 }
