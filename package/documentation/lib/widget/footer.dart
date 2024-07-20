@@ -107,6 +107,15 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
                         "${footerData.title}".trim(),
                         style: TextStyle(
                           color: context.theme.indicatorColor,
+
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                         ),
                       ),
                     );
@@ -135,6 +144,15 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
             style: TextStyle(
               color: context.theme.indicatorColor,
               fontSize: 30,
+
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
             ),
           ),
         ),
@@ -175,6 +193,14 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
           child: Icon(
             iconData,
             color: context.theme.indicatorColor,
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
           ),
         ),
         const SizedBox(

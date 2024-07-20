@@ -55,7 +55,8 @@ class LandingPageDocumentation extends StatefulWidget {
 
 class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
   GlobalKey globalKey = GlobalKey();
-  ScrollController scrollController = ScrollController();
+  ScrollControllerAutoKeepStateData scroll_controller_auto__keep_state_data = ScrollControllerAutoKeepStateData(keyId: "documentation_page_landing");
+
   @override
   void initState() {
     super.initState();
@@ -123,6 +124,14 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                         "${widget.documentationData.title}".trim(),
                         style: TextStyle(
                           color: context.theme.indicatorColor,
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -150,6 +159,15 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
 
                               return Icons.auto_mode;
                             }(),
+
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                           ),
                         );
                       },
@@ -162,7 +180,15 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                         onPressed: () {
                           context.navigator().pop();
                         },
-                        icon: Icon(Icons.arrow_back),
+                        icon: Icon(Icons.arrow_back, 
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],),
                       ),
                     );
                   }
@@ -173,205 +199,280 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        controller: scrollController,
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minHeight: context.height,
-            minWidth: context.width,
-            maxHeight: double.maxFinite,
-            // maxWidth: context.width,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox.fromSize(
-                size: globalKey.sizeRenderBox(),
-              ),
-              //
-              //
-
-              Padding(
-                padding: const EdgeInsets.all(20),
+      body: scroll_controller_auto__keep_state_data.build(
+        child: Builder(
+          builder: (context) {
+            return SingleChildScrollView(
+              controller: scroll_controller_auto__keep_state_data.scroll_controller,
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: context.height,
+                  minWidth: context.width,
+                  maxHeight: double.maxFinite,
+                  // maxWidth: context.width,
+                ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Visibility(
-                      visible: "${widget.documentationData.logo}".trim().isNotEmpty,
-                      child: Image.asset(
-                        "${widget.documentationData.logo}",
+                    SizedBox.fromSize(
+                      size: globalKey.sizeRenderBox(),
+                    ),
+                    //
+                    //
+
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Visibility(
+                            visible: "${widget.documentationData.logo}".trim().isNotEmpty,
+                            child: Image.asset(
+                              "${widget.documentationData.logo}",
+                            ),
+                          ),
+                          Text(
+                            "${widget.documentationData.title}".trim(),
+                            style: TextStyle(
+                              color: context.theme.indicatorColor,
+                              fontSize: 30,
+                              shadows: [
+                                BoxShadow(
+                                  color: context.theme.shadowColor.withAlpha(110),
+                                  spreadRadius: 1,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "${widget.documentationData.description}".trim(),
+                            style: TextStyle(
+                              color: context.theme.indicatorColor,
+                              shadows: [
+                                BoxShadow(
+                                  color: context.theme.shadowColor.withAlpha(110),
+                                  spreadRadius: 1,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+
+                          //
+                          AuthorDocumentationWidget(
+                            authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
+                          ),
+                        ],
                       ),
                     ),
-                    Text(
-                      "${widget.documentationData.title}".trim(),
-                      style: TextStyle(
-                        color: context.theme.indicatorColor,
-                        fontSize: 30,
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: MarkdownDocumentationWidget(
+                        alignment: Alignment.center,
+                        text: () async {
+                          return (widget.documentationData.content ?? "").trim();
+                        },
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "${widget.documentationData.description}".trim(),
-                      style: TextStyle(
-                        color: context.theme.indicatorColor,
-                      ),
-                      textAlign: TextAlign.center,
                     ),
 
                     //
-                    AuthorDocumentationWidget(
-                      authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: MarkdownDocumentationWidget(
-                  alignment: Alignment.center,
-                  text: () async {
-                    return (widget.documentationData.content ?? "").trim();
-                  },
-                ),
-              ),
-
-              //
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Example Project Use This Library",
-                      style: TextStyle(
-                        color: context.theme.indicatorColor,
-                        fontSize: 30,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      """
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Example Project Use This Library",
+                            style: TextStyle(
+                              color: context.theme.indicatorColor,
+                              fontSize: 30,
+                              shadows: [
+                                BoxShadow(
+                                  color: context.theme.shadowColor.withAlpha(110),
+                                  spreadRadius: 1,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            """
 Berikut adalah beberapa contoh project yang menggunakan library ${widget.documentationData.title}
 """
-                          .trim(),
-                      style: TextStyle(
-                        color: context.theme.indicatorColor,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
-
-              //
-              //
-
-              //
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Docs",
-                      style: TextStyle(
-                        color: context.theme.indicatorColor,
-                        fontSize: 30,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
-              Flexible(
-                child: Builder(
-                  builder: (context) {
-                    List<DocsData> docs = widget.documentationData.docs;
-                    return GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 5, crossAxisSpacing: 5, childAspectRatio: 16 / 9),
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: docs.length,
-                      padding: const EdgeInsets.all(20),
-                      itemBuilder: (context, index) {
-                        DocsData docsData = docs[index];
-                        return Column(
-                          children: [
-                            Flexible(
-                              child: Text(
-                                "${docsData.title}",
-                                style: TextStyle(
-                                  color: context.theme.indicatorColor,
-                                  fontSize: 20,
+                                .trim(),
+                            style: TextStyle(
+                              color: context.theme.indicatorColor,
+                              shadows: [
+                                BoxShadow(
+                                  color: context.theme.shadowColor.withAlpha(110),
+                                  spreadRadius: 1,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3), // changes position of shadow
                                 ),
-                              ),
+                              ],
                             ),
-                            const SizedBox(
-                              height: 10,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //
+                    //
+
+                    //
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Docs",
+                            style: TextStyle(
+                              color: context.theme.indicatorColor,
+                              fontSize: 30,
+                              shadows: [
+                                BoxShadow(
+                                  color: context.theme.shadowColor.withAlpha(110),
+                                  spreadRadius: 1,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
                             ),
-                            Flexible(
-                              child: Text(
-                                "${docsData.description}".trim(),
-                                // overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: context.theme.dialogBackgroundColor.withOpacity(0.85),
-                                borderRadius: BorderRadiusDirectional.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: context.theme.shadowColor.withAlpha(110),
-                                    spreadRadius: 1,
-                                    blurRadius: 7,
-                                    offset: const Offset(0, 3), // changes position of shadow
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      child: Builder(
+                        builder: (context) {
+                          List<DocsData> docs = widget.documentationData.docs;
+                          return GridView.builder(
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 5, crossAxisSpacing: 5, childAspectRatio: 16 / 9),
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: docs.length,
+                            padding: const EdgeInsets.all(20),
+                            itemBuilder: (context, index) {
+                              DocsData docsData = docs[index];
+                              return Column(
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      "${docsData.title}",
+                                      style: TextStyle(
+                                        color: context.theme.indicatorColor,
+                                        fontSize: 20,
+                                        shadows: [
+                                          BoxShadow(
+                                            color: context.theme.shadowColor.withAlpha(110),
+                                            spreadRadius: 1,
+                                            blurRadius: 7,
+                                            offset: const Offset(0, 3), // changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                ],
-                              ),
-                              clipBehavior: Clip.antiAlias,
-                              child: MaterialButton(
-                                onPressed: () async {
-                                  context.navigator().push(
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return DocumentationPageDocumentation(
-                                          docsData: docsData,
-                                          authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
-                                          documentationFooterData: widget.documentationData.footer,
-                                          generalLibFlutterApp: widget.generalLibFlutterApp,
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Flexible(
+                                    child: Text(
+                                      "${docsData.description}".trim(),
+                                      style: TextStyle(
+                                        shadows: [
+                                          BoxShadow(
+                                            color: context.theme.shadowColor.withAlpha(110),
+                                            spreadRadius: 1,
+                                            blurRadius: 7,
+                                            offset: const Offset(0, 3), // changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                      // overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: context.theme.dialogBackgroundColor.withOpacity(0.85),
+                                      borderRadius: BorderRadiusDirectional.circular(20),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: context.theme.shadowColor.withAlpha(110),
+                                          spreadRadius: 1,
+                                          blurRadius: 7,
+                                          offset: const Offset(0, 3), // changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    clipBehavior: Clip.antiAlias,
+                                    child: MaterialButton(
+                                      onPressed: () async {
+                                        context.navigator().push(
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return DocumentationPageDocumentation(
+                                                docsData: docsData,
+                                                authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
+                                                documentationFooterData: widget.documentationData.footer,
+                                                generalLibFlutterApp: widget.generalLibFlutterApp,
+                                              );
+                                            },
+                                          ),
                                         );
                                       },
-                                    ),
-                                  );
-                                },
-                                child: const Text(
-                                  "Read More",
-                                ),
-                              ),
+                                      child: Text(
+                                        "Read More",
+                                        style: TextStyle(
+
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
                             ),
                           ],
-                        );
-                      },
-                    );
-                  },
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                    FooterDocumentationWidget(
+                      authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
+                      documentationFooterData: widget.documentationData.footer,
+                    ),
+                  ],
                 ),
               ),
-              FooterDocumentationWidget(
-                authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
-                documentationFooterData: widget.documentationData.footer,
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

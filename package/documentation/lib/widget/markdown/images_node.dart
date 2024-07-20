@@ -203,6 +203,14 @@ class _ImagesWidgetState extends State<MediasWidget> {
               style: TextStyle(
                 color: context.theme.indicatorColor,
                 fontSize: 20,
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
               ),
             ),
             image ?? const SizedBox.shrink(),
@@ -336,6 +344,15 @@ class FullScreenPageState extends State<FullScreenPage> {
                   Icons.arrow_back,
                   color: widget.dark ? Colors.white : Colors.black,
                   size: 25,
+
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                 ),
               ),
             ),

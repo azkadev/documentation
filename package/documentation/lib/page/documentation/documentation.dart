@@ -59,7 +59,8 @@ class DocumentationPageDocumentation extends StatefulWidget {
 
 class _DocumentationPageDocumentationState extends State<DocumentationPageDocumentation> {
   GlobalKey globalKey = GlobalKey();
-  ScrollController scrollController = ScrollController();
+
+  ScrollControllerAutoKeepStateData scroll_controller_auto__keep_state_data = ScrollControllerAutoKeepStateData(keyId: "documentation_page");
 
   @override
   void initState() {
@@ -105,6 +106,7 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
   void dispose() {
     navigate_content_id = "";
     content = "";
+    scroll_controller_auto__keep_state_data.dispose();
     // TODO: implement dispose
     super.dispose();
   }
@@ -152,12 +154,29 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
                     onPressed: () {
                       context.navigator().pop();
                     },
-                    icon: const Icon(Icons.arrow_back),
+                    icon:  Icon(Icons.arrow_back, 
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],),
                   ),
                   Text(
                     "${widget.docsData.title}".trim(),
                     style: TextStyle(
                       color: context.theme.indicatorColor,
+
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                     ),
                   ),
                   // auto change theme
@@ -184,6 +203,15 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
 
                             return Icons.auto_mode;
                           }(),
+
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                         ),
                       );
                     },
@@ -194,7 +222,6 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
           ),
         ),
       ),
-    
       body: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight: context.height,
@@ -243,8 +270,16 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
           child: Text(
             "${element.title}",
             style: TextStyle(
-              color: (element.navigate_content_id == navigate_content_id) ? context.theme.indicatorColor : context.theme.cardColor ,
+              color: (element.navigate_content_id == navigate_content_id) ? context.theme.indicatorColor : context.theme.cardColor,
               fontSize: 25,
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
             ),
           ),
         ),
@@ -266,31 +301,38 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
   }
 
   Widget bodyContent() {
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: context.height - globalKey.sizeRenderBox().height,
-          minWidth: context.width,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: MarkdownDocumentationWidget(
-                alignment: Alignment.center,
-                text: () async {
-                  return content.trim();
-                },
+    return scroll_controller_auto__keep_state_data.build(
+      child: Builder(
+        builder: (context) {
+          return SingleChildScrollView(
+            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            controller: scroll_controller_auto__keep_state_data.scroll_controller,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: context.height - globalKey.sizeRenderBox().height,
+                minWidth: context.width,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: MarkdownDocumentationWidget(
+                      alignment: Alignment.center,
+                      text: () async {
+                        return content.trim();
+                      },
+                    ),
+                  ),
+                  FooterDocumentationWidget(
+                    authorUrlSocialMedias: widget.authorUrlSocialMedias,
+                    documentationFooterData: widget.documentationFooterData,
+                  ),
+                ],
               ),
             ),
-            FooterDocumentationWidget(
-              authorUrlSocialMedias: widget.authorUrlSocialMedias,
-              documentationFooterData: widget.documentationFooterData,
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

@@ -46,12 +46,7 @@ class AuthorDocumentationWidget extends StatefulWidget {
   final bool isShowTitle;
   final String title;
   final List<String> authorUrlSocialMedias;
-  const AuthorDocumentationWidget(
-      {super.key,
-      this.direction = Axis.horizontal,
-      this.isShowTitle = true,
-      this.title = "Author / Created By",
-      required this.authorUrlSocialMedias});
+  const AuthorDocumentationWidget({super.key, this.direction = Axis.horizontal, this.isShowTitle = true, this.title = "Author / Created By", required this.authorUrlSocialMedias});
 
   @override
   State<AuthorDocumentationWidget> createState() => _AuthorDocumentationWidgetState();
@@ -181,8 +176,7 @@ class _AuthorDocumentationWidgetState extends State<AuthorDocumentationWidget> {
       iconData = IonIcons.logo_github;
     } else if (RegExp("(tiktok)", caseSensitive: false).hasMatch(link)) {
       iconData = IonIcons.logo_tiktok;
-    } else if (RegExp("(telegram|t[.]me)", caseSensitive: false)
-        .hasMatch(link)) {
+    } else if (RegExp("(telegram|t[.]me)", caseSensitive: false).hasMatch(link)) {
       iconData = Icons.telegram;
     }
 
@@ -197,11 +191,20 @@ class _AuthorDocumentationWidgetState extends State<AuthorDocumentationWidget> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-            padding: const EdgeInsets.all(5),
-            child: Icon(
-              iconData,
-              color: context.theme.indicatorColor,
-            )),
+          padding: const EdgeInsets.all(5),
+          child: Icon(
+            iconData,
+            color: context.theme.indicatorColor,
+            shadows: [
+              BoxShadow(
+                color: context.theme.shadowColor.withAlpha(110),
+                spreadRadius: 1,
+                blurRadius: 7,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+        ),
         const SizedBox(
           width: 5,
         ),

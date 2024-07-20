@@ -146,6 +146,15 @@ class ProfilePictureDocumentationWidget extends StatelessWidget {
                 color: context.theme.indicatorColor,
                 fontSize: 50,
                 fontWeight: FontWeight.w800,
+
+                          shadows: [
+                            BoxShadow(
+                              color: context.theme.shadowColor.withAlpha(110),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
               ),
             ),
           ),
