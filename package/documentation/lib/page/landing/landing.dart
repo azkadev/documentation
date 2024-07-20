@@ -159,15 +159,14 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
 
                               return Icons.auto_mode;
                             }(),
-
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+                            shadows: [
+                              BoxShadow(
+                                color: context.theme.shadowColor.withAlpha(110),
+                                spreadRadius: 1,
+                                blurRadius: 7,
+                                offset: const Offset(0, 3), // changes position of shadow
+                              ),
+                            ],
                           ),
                         );
                       },
@@ -180,7 +179,8 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                         onPressed: () {
                           context.navigator().pop();
                         },
-                        icon: Icon(Icons.arrow_back, 
+                        icon: Icon(
+                          Icons.arrow_back,
                           shadows: [
                             BoxShadow(
                               color: context.theme.shadowColor.withAlpha(110),
@@ -188,7 +188,8 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                               blurRadius: 7,
                               offset: const Offset(0, 3), // changes position of shadow
                             ),
-                          ],),
+                          ],
+                        ),
                       ),
                     );
                   }
@@ -444,15 +445,14 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                                       child: Text(
                                         "Read More",
                                         style: TextStyle(
-
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+                                          shadows: [
+                                            BoxShadow(
+                                              color: context.theme.shadowColor.withAlpha(110),
+                                              spreadRadius: 1,
+                                              blurRadius: 7,
+                                              offset: const Offset(0, 3), // changes position of shadow
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -467,6 +467,9 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                     FooterDocumentationWidget(
                       authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
                       documentationFooterData: widget.documentationData.footer,
+                    ),
+                    SizedBox(
+                      height: context.mediaQueryData.padding.bottom,
                     ),
                   ],
                 ),
