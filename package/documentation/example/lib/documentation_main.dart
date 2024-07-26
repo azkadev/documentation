@@ -47,10 +47,81 @@ class DocumentationMainApp extends StatelessWidget {
   static GeneralLibFlutterApp generalLibFlutterApp = GeneralLibFlutterApp();
   const DocumentationMainApp({super.key});
 
+  ThemeData lightTheme_default() {
+    final ThemeData themeData = ThemeData.light();
+    return themeData.copyWith(
+      // primaryColor: themeData.scaffoldBackgroundColor,
+      shadowColor: const Color.fromARGB(110, 0, 0, 0),
+      // textTheme: const TextTheme(
+      //   labelMedium: TextStyle(
+      //     color: Colors.black,
+      //     fontSize: 18.0,
+      //     fontWeight: FontWeight.w500,
+      //   ),
+      //   labelSmall: TextStyle(
+      //     color: Colors.black,
+      //     fontSize: 14.0,
+      //     fontWeight: FontWeight.w500,
+      //   ),
+      // ),
+      //
+      textTheme: Typography().black.apply(
+            fontFamily: "Poppins",
+            package: "general_lib_assets_flutter",
+          ),
+      indicatorColor: Colors.black,
+      dialogBackgroundColor: Colors.white,
+      cardColor: Colors.grey,
+      colorScheme: const ColorScheme.light().copyWith(
+        primary: Colors.black,
+        secondary: Colors.white,
+      ),
+      highlightColor: Colors.indigo,
+    );
+  }
+
+  ThemeData darkTheme_default() {
+    final ThemeData themeData = ThemeData.dark();
+    return themeData.copyWith(
+      // primaryColor: themeData.scaffoldBackgroundColor,
+      scaffoldBackgroundColor: Colors.black,
+      // textTheme: const TextTheme(
+      //   labelMedium: TextStyle(
+      //     color: Colors.white,
+      //     fontSize: 18.0,
+      //     fontWeight: FontWeight.w400,
+      //   ),
+      //   labelSmall: TextStyle(
+      //     color: Colors.white,
+      //     fontSize: 14.0,
+      //     fontWeight: FontWeight.w400,
+      //   ),
+      // ),
+      textTheme: Typography().white.apply(
+            fontFamily: "Poppins",
+            package: "general_lib_assets_flutter",
+          ),
+      indicatorColor: Colors.white,
+      dialogBackgroundColor: const Color.fromARGB(255, 64, 64, 64),
+      cardColor: Colors.grey,
+      shadowColor: const Color.fromARGB(255, 24, 4, 83),
+      colorScheme: const ColorScheme.dark().copyWith(
+        primary: const Color.fromARGB(255, 64, 64, 64),
+      ),
+      highlightColor: Colors.cyan,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GeneralLibFlutterAppMain(
       generalLibFlutterApp: generalLibFlutterApp,
+      lightTheme: (context, defaultTheme) {
+        return lightTheme_default();
+      },
+      darkTheme: (context, defaultTheme) {
+        return darkTheme_default();
+      },
       builder: (themeMode, lightTheme, darkTheme, widget) {
         Widget child = MaterialApp(
           theme: lightTheme,
