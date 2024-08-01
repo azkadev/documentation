@@ -65,7 +65,15 @@ class _DocumentationAppState extends State<DocumentationApp> {
     setState(() {});
 
     Future(() async {
+      widget.generalLibFlutterApp.initState(
+        context: context,
+        themeMode: widget.generalLibFlutterApp.themeMode,
+        onSet: () {
+          setState(() {});
+        },
+      );
       await Future.delayed(Durations.extralong4);
+
       // ignore: use_build_context_synchronously
       context.navigator().pushReplacement(MaterialPageRoute(
         builder: (context) {
