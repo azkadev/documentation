@@ -33,13 +33,16 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 <!-- END LICENSE --> */
 import 'package:flutter/material.dart';
+import 'package:general_lib/general_lib.dart';
 import 'package:general_lib_flutter/widget/widget.dart';
 import 'package:documentation/documentation_core.dart';
+import 'package:simulate/simulate.dart';
 import 'documentation_data.dart';
 
 // ignore: non_constant_identifier_names
 void documentation_main_app(List<String> arguments) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Simulate.ensureInitialized();
   runApp(const DocumentationMainApp());
 }
 
@@ -123,7 +126,7 @@ class DocumentationMainApp extends StatelessWidget {
         return darkTheme_default();
       },
       builder: (themeMode, lightTheme, darkTheme, widget) {
-        Widget child = MaterialApp(
+        final Widget child = MaterialApp(
           theme: lightTheme,
           darkTheme: darkTheme,
           themeMode: themeMode,
@@ -133,6 +136,21 @@ class DocumentationMainApp extends StatelessWidget {
             documentationData: documentationData,
           ),
         );
+
+        if (Dart.isDebug) {
+          if (Dart.isDesktop && Dart.isWeb == false) {
+            return MaterialApp(
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              themeMode: themeMode,
+              debugShowCheckedModeBanner: false,
+              home: SimulateApp(
+                generalLibFlutterApp: generalLibFlutterApp,
+                home: child,
+              ),
+            );
+          }
+        }
 
         return child;
       },
