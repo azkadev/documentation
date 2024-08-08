@@ -32,6 +32,8 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 
 
 <!-- END LICENSE --> */
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:general_lib_flutter/general_lib_flutter.dart';
 import 'package:documentation/page/documentation/documentation.dart';
@@ -223,7 +225,10 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                     //
 
                     Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 5,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -275,7 +280,7 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(5),
                       child: MarkdownDocumentationWidget(
                         alignment: Alignment.center,
                         text: () async {
@@ -286,7 +291,10 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
 
                     //
                     Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 5,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -335,7 +343,10 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
 
                     //
                     Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 5,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -360,110 +371,34 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
                         ],
                       ),
                     ),
-                    Flexible(
-                      child: Builder(
-                        builder: (context) {
-                          List<DocsData> docs = widget.documentationData.docs;
-                          return GridView.builder(
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 5, crossAxisSpacing: 5, childAspectRatio: 16 / 9),
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: docs.length,
-                            padding: const EdgeInsets.all(20),
-                            itemBuilder: (context, index) {
-                              DocsData docsData = docs[index];
-                              return Column(
-                                children: [
-                                  Flexible(
-                                    child: Text(
-                                      "${docsData.title}",
-                                      style: TextStyle(
-                                        color: context.theme.indicatorColor,
-                                        fontSize: 20,
-                                        shadows: [
-                                          BoxShadow(
-                                            color: context.theme.shadowColor.withAlpha(110),
-                                            spreadRadius: 1,
-                                            blurRadius: 7,
-                                            offset: const Offset(0, 3), // changes position of shadow
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      "${docsData.description}".trim(),
-                                      style: TextStyle(
-                                        shadows: [
-                                          BoxShadow(
-                                            color: context.theme.shadowColor.withAlpha(110),
-                                            spreadRadius: 1,
-                                            blurRadius: 7,
-                                            offset: const Offset(0, 3), // changes position of shadow
-                                          ),
-                                        ],
-                                      ),
-                                      // overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: context.theme.dialogBackgroundColor.withOpacity(0.85),
-                                      borderRadius: BorderRadiusDirectional.circular(20),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: context.theme.shadowColor.withAlpha(110),
-                                          spreadRadius: 1,
-                                          blurRadius: 7,
-                                          offset: const Offset(0, 3), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    clipBehavior: Clip.antiAlias,
-                                    child: MaterialButton(
-                                      onPressed: () async {
-                                        context.navigator().push(
-                                          MaterialPageRoute(
-                                            builder: (context) {
-                                              return DocumentationPageDocumentation(
-                                                docsData: docsData,
-                                                authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
-                                                documentationFooterData: widget.documentationData.footer,
-                                                generalLibFlutterApp: widget.generalLibFlutterApp,
-                                              );
-                                            },
-                                          ),
-                                        );
-                                      },
-                                      child: Text(
-                                        "Read More",
-                                        style: TextStyle(
-                                          shadows: [
-                                            BoxShadow(
-                                              color: context.theme.shadowColor.withAlpha(110),
-                                              spreadRadius: 1,
-                                              blurRadius: 7,
-                                              offset: const Offset(0, 3), // changes position of shadow
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ),
+                    () {
+                      final List<DocsData> docs = widget.documentationData.docs;
+                      return MediaQuery.removePadding(
+                        context: context,
+                        removeBottom: true,
+                        removeLeft: true,
+                        removeRight: true,
+                        removeTop: true,
+                        child: Wrap( 
+                          // spacing: 3,
+                          // runSpacing: 3,
+                          direction: (context.mediaQueryData.orientation.isPortrait) ? Axis.vertical : Axis.horizontal,
+                          alignment: WrapAlignment.start,
+                          children: docs.map((e) {
+                            return Container(
+                              width: (context.mediaQueryData.orientation.isPortrait) ? context.width : context.width / 4,
+                              margin: const EdgeInsets.all(10),
+                              alignment: Alignment.center,
+                              // padding: EdgeInsets.all(5),
+                              child: docsContainer(
+                                context: context,
+                                docsData: e,
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      );
+                    }(),
                     FooterDocumentationWidget(
                       authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
                       documentationFooterData: widget.documentationData.footer,
@@ -478,6 +413,116 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
           },
         ),
       ),
+    );
+  }
+
+  Widget docsContainer({
+    required BuildContext context,
+    required DocsData docsData,
+  }) {
+    // SelectableText();
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      
+      children: [
+        Flexible(
+          child: Padding(
+            padding: EdgeInsets.all(
+              5,
+            ),
+            child: Text(
+              "${docsData.title}",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: context.theme.indicatorColor,
+                fontSize: 20,
+                shadows: [
+                  BoxShadow(
+                    color: context.theme.shadowColor.withAlpha(110),
+                    spreadRadius: 1,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Flexible(
+          child: Padding(
+            padding: EdgeInsets.all(
+              5,
+            ),
+            child: Text(
+              "${docsData.description}".trim(),
+              // selectionHeightStyle: BoxHeightStyle.max,
+              // selectionWidthStyle: BoxWidthStyle.max,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                shadows: [
+                  BoxShadow(
+                    color: context.theme.shadowColor.withAlpha(110),
+                    spreadRadius: 1,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              // overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: context.theme.dialogBackgroundColor.withOpacity(0.85),
+            borderRadius: BorderRadiusDirectional.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: context.theme.shadowColor.withAlpha(110),
+                spreadRadius: 1,
+                blurRadius: 7,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: MaterialButton(
+            onPressed: () async {
+              context.navigator().push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DocumentationPageDocumentation(
+                      docsData: docsData,
+                      authorUrlSocialMedias: widget.documentationData.author_url_social_medias,
+                      documentationFooterData: widget.documentationData.footer,
+                      generalLibFlutterApp: widget.generalLibFlutterApp,
+                    );
+                  },
+                ),
+              );
+            },
+            child: Text(
+              "Read More",
+              style: TextStyle(
+                shadows: [
+                  BoxShadow(
+                    color: context.theme.shadowColor.withAlpha(110),
+                    spreadRadius: 1,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

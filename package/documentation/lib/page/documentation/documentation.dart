@@ -154,29 +154,30 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
                     onPressed: () {
                       context.navigator().pop();
                     },
-                    icon:  Icon(Icons.arrow_back, 
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],),
+                    icon: Icon(
+                      Icons.arrow_back,
+                      shadows: [
+                        BoxShadow(
+                          color: context.theme.shadowColor.withAlpha(110),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
                   ),
                   Text(
                     "${widget.docsData.title}".trim(),
                     style: TextStyle(
                       color: context.theme.indicatorColor,
-
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+                      shadows: [
+                        BoxShadow(
+                          color: context.theme.shadowColor.withAlpha(110),
+                          spreadRadius: 1,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
                     ),
                   ),
                   // auto change theme
@@ -203,7 +204,6 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
 
                             return Icons.auto_mode;
                           }(),
-
                           shadows: [
                             BoxShadow(
                               color: context.theme.shadowColor.withAlpha(110),
@@ -262,7 +262,7 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
     List<Widget> children = [];
 
     for (var element in widget.docsData.sidebars) {
-      children.add(
+       children.add(
         TextButton(
           onPressed: () async {
             setContent(contentId: element.navigate_content_id ?? "");
@@ -271,15 +271,15 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
             "${element.title}",
             style: TextStyle(
               color: (element.navigate_content_id == navigate_content_id) ? context.theme.indicatorColor : context.theme.cardColor,
-              fontSize: 25,
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+              fontSize: 15,
+              shadows: [
+                BoxShadow(
+                  color: context.theme.shadowColor.withAlpha(110),
+                  spreadRadius: 1,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
             ),
           ),
         ),
@@ -294,6 +294,7 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: children,
         ),
       ),
@@ -316,7 +317,7 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(5),
                     child: MarkdownDocumentationWidget(
                       alignment: Alignment.center,
                       text: () async {

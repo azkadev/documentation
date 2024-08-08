@@ -82,58 +82,67 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
           child: Builder(
             builder: (context) {
               List<Widget> children = [
-                AuthorDocumentationWidget(
-                  direction: Axis.vertical,
-                  isShowTitle: true,
-                  title: "My Social Media",
-                  authorUrlSocialMedias: links,
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: AuthorDocumentationWidget(
+                    direction: Axis.vertical,
+                    isShowTitle: true,
+                    title: "My Social Media",
+                    authorUrlSocialMedias: links,
+                  ),
                 ),
               ];
               for (var element in widget.documentationFooterData.footers) {
-                var footers = element.footer;
-                children.add(ListWithDocumentationWidget(
-                  itemCount: footers.length,
-                  isShowTitle: true,
-                  title: "${element.title}".trim(),
-                  direction: Axis.vertical,
-                  authorUrlSocialMedias: widget.authorUrlSocialMedias,
-                  builder: (context, index) {
-                    FooterData footerData = footers[index];
-                    return TextButton(
-                      onPressed: () async {
-                        await launchUrlString(footerData.url ?? "", mode: LaunchMode.externalApplication);
-                      },
-                      child: Text(
-                        "${footerData.title}".trim(),
-                        style: TextStyle(
-                          color: context.theme.indicatorColor,
-
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
+                final footers = element.footer;
+                children.add(
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: ListWithDocumentationWidget(
+                      itemCount: footers.length,
+                      isShowTitle: true,
+                      title: "${element.title}".trim(),
+                      direction: Axis.vertical,
+                      authorUrlSocialMedias: widget.authorUrlSocialMedias,
+                      builder: (context, index) {
+                        FooterData footerData = footers[index];
+                        return TextButton(
+                          onPressed: () async {
+                            await launchUrlString(footerData.url ?? "", mode: LaunchMode.externalApplication);
+                          },
+                          child: Text(
+                            "${footerData.title}".trim(),
+                            style: TextStyle(
+                              color: context.theme.indicatorColor,
+                              shadows: [
+                                BoxShadow(
+                                  color: context.theme.shadowColor.withAlpha(110),
+                                  spreadRadius: 1,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ));
-              }
-              if (context.orientation.isPortrait) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: children,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 );
               }
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: children,
-              );
+              return MediaQuery.removePadding(
+                context: context,
+                removeBottom: true,
+                removeLeft: true,
+                removeRight: true,
+                removeTop: true,
+                child: Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  direction: (context.mediaQueryData.orientation.isPortrait) ? Axis.vertical : Axis.horizontal,
+                  alignment: WrapAlignment.center,
+                  children: children,
+                ),
+              ); 
             },
           ),
         ),
@@ -143,16 +152,15 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
             "@ Copyright 2024 - ${DateTime.now().year}",
             style: TextStyle(
               color: context.theme.indicatorColor,
-              fontSize: 30,
-
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+              fontSize: 10,
+              shadows: [
+                BoxShadow(
+                  color: context.theme.shadowColor.withAlpha(110),
+                  spreadRadius: 1,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
             ),
           ),
         ),
@@ -193,14 +201,14 @@ class _FooterDocumentationWidgetState extends State<FooterDocumentationWidget> {
           child: Icon(
             iconData,
             color: context.theme.indicatorColor,
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+            shadows: [
+              BoxShadow(
+                color: context.theme.shadowColor.withAlpha(110),
+                spreadRadius: 1,
+                blurRadius: 7,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
           ),
         ),
         const SizedBox(

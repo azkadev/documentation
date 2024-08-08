@@ -35,12 +35,12 @@ Bukan maksud kami menipu itu karena harga yang sudah di kalkulasi + bantuan tiba
 import 'package:documentation/scheme/scheme.dart';
 
 DocumentationData get documentationData => DocumentationData.create(
-      title: "Example Documentation",
-      logo: "",
-      description: """
+    title: "Example Documentation",
+    logo: "",
+    description: """
 Example Adalah sebuah library yang memungkinkan anda membuat project dengan cepat
 """,
-      content: """
+    content: """
 <h2 align="center">Ultra Fast, Enjoyable & Cross Platform Telegram Client</h2>
 
 **Telegram Client** Dart **library** for make telegram base flutter **bot**, **userbot**, **App** Support Run Server Side And Client Side, This library 100% easy for make multiples **client or accounts** because this library you just call function not execute shell command so update account will show at function event emitter
@@ -105,64 +105,64 @@ void main(List<String> args) {
 
 
 """
-          .trim(),
-      author_url_social_medias: {
-        "https://youtube.com/@azkadev",
-        "https://github.com/azkadev",
-        "https://t.me/azkadev",
-        "https://instagram.com/azka.developer",
-        "https://twitter.com/azka_dev",
-        "https://azkadev.netlify.app",
-        // "https://tiktok.com/azkadev",
-      }.toList(),
-      footer: DocumentationFooterData.create(
-        footers: [
-          FootersData.create(
-            title: "Other Information",
-            footer: [
-              FooterData.create(
-                title: "About",
-              ),
-              FooterData.create(title: "Buy My Services On Telegram 🥺", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
-              FooterData.create(title: "Donate Me 🥺", url: "https://github.com/sponsor/azkadev"),
-              FooterData.create(title: "Donate Me On Telegram 🥺", url: "https://t.me/azkadevbot?start=donate_web_documentation"),
-            ],
-          ),
-          FootersData.create(
-            title: "Other Library",
-            footer: [
-              FooterData.create(title: "Discord Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
-              FooterData.create(title: "DoodStream Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
-              FooterData.create(title: "Github Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
-              FooterData.create(title: "Google Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
-              FooterData.create(title: "Whatsapp Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
-            ],
-          ),
-        ],
-      ),
-      docs: [
-        DocsData.create(
-          doc_id: "mtproto",
-          title: "Mtproto",
-          description: """
+        .trim(),
+    author_url_social_medias: {
+      "https://youtube.com/@azkadev",
+      "https://github.com/azkadev",
+      "https://t.me/azkadev",
+      "https://instagram.com/azka.developer",
+      "https://twitter.com/azka_dev",
+      "https://azkadev.netlify.app",
+      // "https://tiktok.com/azkadev",
+    }.toList(),
+    footer: DocumentationFooterData.create(
+      footers: [
+        FootersData.create(
+          title: "Other Information",
+          footer: [
+            FooterData.create(
+              title: "About",
+            ),
+            FooterData.create(title: "Buy My Services On Telegram 🥺", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
+            FooterData.create(title: "Donate Me 🥺", url: "https://github.com/sponsor/azkadev"),
+            FooterData.create(title: "Donate Me On Telegram 🥺", url: "https://t.me/azkadevbot?start=donate_web_documentation"),
+          ],
+        ),
+        FootersData.create(
+          title: "Other Library",
+          footer: [
+            FooterData.create(title: "Discord Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
+            FooterData.create(title: "DoodStream Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
+            FooterData.create(title: "Github Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
+            FooterData.create(title: "Google Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
+            FooterData.create(title: "Whatsapp Client", url: "https://t.me/azkadevbot?start=ref_web_documentation"),
+          ],
+        ),
+      ],
+    ),
+    docs: List.generate(4, (index) {
+      return DocsData.create(
+        doc_id: "mtproto",
+        title: "Mtproto",
+        description: """
 Mtproto adalah library yang paling ringan cepat tidak memerlukan ffi namun jika menggunakan ini harap jangan flood / mencoba call api
 berkali kali karena api ini direct ke telegram langsung sehingga akan sangat mudah di banned jika menggunakan ini (api ini di gunakan jika anda sudah mahir coding + perhitungan limitasi api)
 """
-              .trim(),
-          sidebars: [
-            DocSideBar.create(
-              title: "Intro",
-              navigate_content_id: "intro",
-            ),
-            DocSideBar.create(
-              title: "Demo",
-              navigate_content_id: "demo",
-            ),
-          ],
-          contents: [
-            DocContents.create(
-              content_id: "intro",
-              content: """
+            .trim(),
+        sidebars: [
+          DocSideBar.create(
+            title: "Intro",
+            navigate_content_id: "intro",
+          ),
+          DocSideBar.create(
+            title: "Demo",
+            navigate_content_id: "demo",
+          ),
+        ],
+        contents: [
+          DocContents.create(
+            content_id: "intro",
+            content: """
 
 <h2 align="center">Ultra Fast, Enjoyable & Cross Platform Telegram Client</h2>
 
@@ -228,11 +228,11 @@ void main(List<String> args) {
 **I really need funds so that this library can be easier to use. You can buy this library by subscribing/sponsoring me on GitHub:** [AZKADEV](https://github.com/azkadev)
 
 """
-                  .trim(),
-            ),
-            DocContents.create(
-              content_id: "demo",
-              content: """
+                .trim(),
+          ),
+          DocContents.create(
+            content_id: "demo",
+            content: """
 
 f
 <h2 align="center">Ultra Fast, Enjoyable & Cross Platform Telegram Client</h2>
@@ -299,9 +299,8 @@ void main(List<String> args) {
 **I really need funds so that this library can be easier to use. You can buy this library by subscribing/sponsoring me on GitHub:** [AZKADEV](https://github.com/azkadev)
 
 """
-                  .trim(),
-            )
-          ],
-        ),
-      ],
-    );
+                .trim(),
+          )
+        ],
+      );
+    }));
