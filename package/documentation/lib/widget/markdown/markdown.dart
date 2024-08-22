@@ -104,6 +104,7 @@ class MarkdownDocumentationWidget extends StatelessWidget {
                     node.textContent,
                     config,
                     visitor,
+                    fontSize: 12,
                   );
                 },
               ),
@@ -159,16 +160,16 @@ class _CallbackDataWidgetState extends State<CallbackDataWidget> {
       onTap: () async {},
       child: Text(
         widget.text,
-        style:  TextStyle(
+        style: TextStyle(
           color: Colors.blue,
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+          shadows: [
+            BoxShadow(
+              color: context.theme.shadowColor.withAlpha(110),
+              spreadRadius: 1,
+              blurRadius: 7,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ],
         ),
       ),
     );
@@ -204,25 +205,21 @@ class MarkdownTextNodeCustomWidget extends StatefulWidget {
   });
 
   @override
-  State<MarkdownTextNodeCustomWidget> createState() =>
-      _MarkdownTextNodeCustomWidgetState();
+  State<MarkdownTextNodeCustomWidget> createState() => _MarkdownTextNodeCustomWidgetState();
 }
 
-class _MarkdownTextNodeCustomWidgetState
-    extends State<MarkdownTextNodeCustomWidget> {
+class _MarkdownTextNodeCustomWidgetState extends State<MarkdownTextNodeCustomWidget> {
   @override
   Widget build(BuildContext context) {
     String url = () {
-      if (widget.attribute["url"] is String &&
-          (widget.attribute["url"] as String).isNotEmpty) {
+      if (widget.attribute["url"] is String && (widget.attribute["url"] as String).isNotEmpty) {
         return (widget.attribute["url"] as String);
       }
       return "";
     }();
     double? fontSize = () {
       try {
-        double sizeFont =
-            (int.tryParse(widget.attribute["size"] ?? "0") ?? 0).toDouble();
+        double sizeFont = (int.tryParse(widget.attribute["size"] ?? "0") ?? 0).toDouble();
         if (sizeFont > 0) {
           return sizeFont;
         }
@@ -239,14 +236,14 @@ class _MarkdownTextNodeCustomWidgetState
           // fontFamily: "NotoEmoji",
           color: (url.isNotEmpty) ? Colors.blue : null,
           fontSize: fontSize,
-                          shadows: [
-                            BoxShadow(
-                              color: context.theme.shadowColor.withAlpha(110),
-                              spreadRadius: 1,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
+          shadows: [
+            BoxShadow(
+              color: context.theme.shadowColor.withAlpha(110),
+              spreadRadius: 1,
+              blurRadius: 7,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ],
         ),
       );
 

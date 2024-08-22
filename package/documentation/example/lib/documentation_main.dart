@@ -146,7 +146,9 @@ class DocumentationMainApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               home: SimulateApp(
                 generalLibFlutterApp: generalLibFlutterApp,
-                home: child,
+                home: (context) {
+                  return child;
+                },
               ),
             );
           }

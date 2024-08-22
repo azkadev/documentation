@@ -259,6 +259,7 @@ class _LandingPageDocumentationState extends State<LandingPageDocumentation> {
                           Text(
                             "${widget.documentationData.description}".trim(),
                             style: TextStyle(
+                              fontSize: 12,
                               color: context.theme.indicatorColor,
                               shadows: [
                                 BoxShadow(
@@ -322,6 +323,7 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
 """
                                 .trim(),
                             style: TextStyle(
+                              fontSize: 12,
                               color: context.theme.indicatorColor,
                               shadows: [
                                 BoxShadow(
@@ -462,6 +464,7 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
               // selectionWidthStyle: BoxWidthStyle.max,
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontSize: 12,
                 shadows: [
                   BoxShadow(
                     color: context.theme.shadowColor.withAlpha(110),
@@ -510,6 +513,7 @@ Berikut adalah beberapa contoh project yang menggunakan library ${widget.documen
             child: Text(
               "Read More",
               style: TextStyle(
+                fontSize: 15,
                 shadows: [
                   BoxShadow(
                     color: context.theme.shadowColor.withAlpha(110),

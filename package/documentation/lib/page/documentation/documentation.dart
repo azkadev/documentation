@@ -169,6 +169,7 @@ class _DocumentationPageDocumentationState extends State<DocumentationPageDocume
                   Text(
                     "${widget.docsData.title}".trim(),
                     style: TextStyle(
+                      fontSize: 20,
                       color: context.theme.indicatorColor,
                       shadows: [
                         BoxShadow(

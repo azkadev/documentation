@@ -11,7 +11,7 @@ dependencies:
   path: '^1.9.0'
   general_lib: '^0.0.44'
   general_lib_flutter: '^0.0.25'
-  simulate: ^0.0.40
+  simulate: '^0.0.40'
   documentation: 
     path: '../'
 dev_dependencies: 
